@@ -9,4 +9,4 @@ CONTENTS OF PROJECT:        32 Programs (29+3)
 VERSION or DATE:            31st January 2022
 HOW TO START THIS PROJECT:  This project was made in BlueJ, so opening the package.bluej file should do it. Otherwise each file can be run directly from the command line as well.
 AUTHORS:                    Cosmic-Infiity (Shubham Sinha)
-USER INSTRUCTIONS:
+USER INSTRUCTIONS:          The programs were initially meant to be run from BlueJ, as such the main function and "String[] args" might be missing in some instances. Be sure to add them if required.
