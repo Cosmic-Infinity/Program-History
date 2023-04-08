@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=Stack_49
+comment0.text=\r\ncapacity\ \:\ 4\r\npushed\ \r\n"apple"\r\n"orange"\r\n"banana"\r\n"mango"\r\n\r\n
+comment1.params=cap
+comment1.target=Stack_49(int)
+comment2.params=n
+comment2.target=void\ pushname(java.lang.String)
+comment3.params=
+comment3.target=java.lang.String\ popname()
+comment4.params=
+comment4.target=void\ display()
+numComments=5

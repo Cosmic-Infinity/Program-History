@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Holder_50
+comment1.params=n
+comment1.target=Holder_50(int)
+comment2.params=v
+comment2.target=void\ addint(int)
+comment3.params=
+comment3.target=int\ removeint()
+comment4.params=
+comment4.target=void\ show()
+numComments=5
