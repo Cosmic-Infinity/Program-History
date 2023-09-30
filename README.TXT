@@ -5,7 +5,7 @@ all they need to know. The comments should usually include at least:
 ------------------------------------------------------------------------
 
 PROJECT TITLE: 		    Computer Assignment (2022-23)
-CONTENTS OF PROJECT:        32 Programs (29+3)
+CONTENTS OF PROJECT:        atleast 50 Programs
 VERSION or DATE:            4th December 2022
 HOW TO START THIS PROJECT:  This project was made in BlueJ, so opening the package.bluej file should do it. Otherwise each file can be run directly from the command line as well.
 AUTHORS:                    Cosmic-Infiity (Shubham Sinha)
