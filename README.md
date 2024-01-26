@@ -1,5 +1,5 @@
 # First Year CP Lab Solutions
-Contains solutions of KIIT first year Programming Lab manual's Lab Assignments
+Contains solutions of KIIT first year Programming Lab manual's Lab Assignments [i.e mostly solutions of **LA**]
 
 ## How to run
 Popular IDEs have extensions to recognise and run C code. Though if you are following along with the class and using GNU/Linux to run your code, you can use the simple commands.
