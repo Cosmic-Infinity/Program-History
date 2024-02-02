@@ -15,7 +15,7 @@ int main(){
 	 	else
 	 		printf("\t%d\n",i);
 	}
-	if(upper%2==1)
+	if(upper%2==1) //optional
 	printf("\n");
 	return 0;
 }
