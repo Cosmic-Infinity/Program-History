@@ -21,6 +21,7 @@ int main(){
 				break;
 			}
 		}
+		if(f==1)break;
 	}
 	
 	printf(f==0?"Symmetric" : "NOT Symmetric");

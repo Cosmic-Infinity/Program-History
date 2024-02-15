@@ -34,7 +34,7 @@ int main(){
 		}
 	}
 	
-	printf("\nResultant matrix B :\n");
+	printf("\nResultant matrix :\n");
 	for(i = 0; i<m; i++){
 		for(j=0; j<p; j++)
 			printf("%d ",mul[i][j]);
