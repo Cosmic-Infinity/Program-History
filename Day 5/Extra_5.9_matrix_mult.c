@@ -1,4 +1,5 @@
 //matrix multiplication with arbitrary matrix sizes
+//matrix of arbitrary size
 
 #include <stdio.h>
 
@@ -19,7 +20,7 @@ int main(){
 		for(j=0; j<w; j++)
 			scanf("%d",&a[i][j]);
 	}
-	printf("Enter %dx%d (%d) values for matrix A :\n",n,p,n*p);
+	printf("Enter %dx%d (%d) values for matrix B :\n",n,p,n*p);
 	for(i=0; i<n; i++){
 		for(j=0; j<p; j++)
 			scanf("%d",&b[i][j]);
