@@ -10,9 +10,8 @@ int main(){
 	}
 	
 	for(i=0; i<3; i++){
-		for(j=0; j<4; j++){
+		for(j=0; j<4; j++)
 			sum+= a[i][j];
-		}
 	}
 	
 	printf("Sum of elements : %d",sum);

@@ -20,6 +20,7 @@ int main(){
 				f=1;break;
 			}
 		}
+		if(f==1)break; //optional
 	}
 	
 	printf(f==0?"Identity Matrix" : "NOT Identity");
