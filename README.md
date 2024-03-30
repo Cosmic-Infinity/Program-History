@@ -1,5 +1,12 @@
 # First Year CP Lab Solutions
-Contains solutions of KIIT first year Programming Lab manual's Lab Assignments [i.e mostly solutions of **LA**]
+Contains solutions of KIIT first year Programming Lab Assignments.
+
+>**NOTE : The sequence of question may change from year to year. Check once before referring.**
+
+All folders named `Day 1, Day 2, ...` are from [PC Lab Manual](https://github.com/Cosmic-Infinity/Programming-Lab-FirstYear/blob/main/PC%20Lab.%20Manual.pdf).
+
+All folders named `Week 11, Week 12, ...` are from [Programming Lab Lesson Plan](https://github.com/Cosmic-Infinity/Programming-Lab-FirstYear/blob/main/Programming%20Lab%20Lessson%20Plan%202024.docx.pdf).
+
 
 ## How to run
 Popular IDEs have extensions to recognise and run C code. Though if you are following along with the class and using GNU/Linux to run your code, you can use the simple commands.
