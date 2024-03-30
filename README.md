@@ -22,4 +22,4 @@ Remember to read the Lab Manual provided (you can find a copy of it in this repo
 ### Remember
 There might as well be better/more efficient solutions to these questions. The point here wasn't to write the most efficient C code, but write an easy to understand simple solution. A lot of solutions can be made with bit manipulation, strings, libraries, etc, but remember not all of them are present in this introductory course, and using them might irritate the teacher, which you know...isn't worth it when it's 4 freaking credits we're dealing with.
 
-<i>P.S. I have checked these solutions personally, and they appear to be correct to the best of my knowledge. Though remember, I am only human. And always keep an eye out for misnumbered questions. I am bad with numbers :p</i>
+<i>P.S. I have checked these solutions personally, and they appear to be correct to the best of my knowledge. Though I am only human, so keep an eye out for misnumbered questions. I am bad with numbers :p</i>
