@@ -1,0 +1,6 @@
+if
+if-else
+switch-case
+
+same rules like java apply;
+unlike java, c compiler doesn't complain about unreachable statements in if-else

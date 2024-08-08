@@ -1,0 +1,7 @@
+Decimal [0-9]
+Binary [0,1]
+Octal [0-7]
+Hexadecimal [0-9-A-F]
+
+Binary Subtraction : Make one's compliment, add 1, add it to the other number
+

@@ -1,0 +1,17 @@
+A function calling itself is a recursive function.
+
+Must have terminating conditipon (base condition), or else it will run infinitely (or till stack overflow).
+
+C usually DOES NOT show any stack overflow errors. It simply halts (not terminate).
+
+
+int fact(int n){
+	if(n==1)
+		return 1;
+
+	return(fact(n-1));
+}
+
+recursion requires more memory and cpu cycles.
+recursion saves the state of the caller function on the stack while it handles the called function.
+recursion is used only if there is an absolute need for it, and is not a substitute for loop.

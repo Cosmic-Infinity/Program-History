@@ -1,0 +1,10 @@
+for 
+while
+do-while
+
+To perform a task repeatedly.
+Usually a condition check repetedly, based on which a statement gets executed repetedly.
+Can be "pre test" or "post test".
+
+suggestion : when number of iterations are known fixed, preferably use for loop. othrewise while.
+do-while when we need to run the statement atleast once before condition check.

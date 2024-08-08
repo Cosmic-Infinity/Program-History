@@ -1,0 +1,221 @@
+Arrays contain homogeneous and contiguous data.
+
+Though there exist scenarios where we need to store non-homogeneous data.
+Like think student details - wher each student may have a name, roll no, class, section, course, etc...
+
+Now that problem can be solved partly by using multiple array with each index storing one data point of one student.
+
+But having this data together (clubbed in one place), is helpful while accessing them. That's why structs.
+
+-------------------------------------------------------------------------------------------------------
+
+struct student{
+	int rollno;
+	char name[32];
+	char addrs[];
+	int sem;
+	int yr;
+};
+
+//whatever data we need, will be member of this sturecture 'student'.
+//unlike primitive data, struct is user defined data type.
+};
+
+
+
+struct book{
+	char name[30];
+	char authors[4][30]; //there are better ways to do it than 2d array
+	char isbn[14];
+	int yr;
+};
+
+
+NOTE : structure definitions should NOT be defined within any function, should have global scope. Although possible, this causes problem in large scale deveploment.
+
+-------------------------------------------------------------------------------------------------------
+
+
+preferable definition orders
+
+
+//include standard headers
+//include personal libs
+//macro/preprocessor/conditional-macros (#define. #include is also a macro though)
+//global variables
+//define structures & unions
+//declare function prototypes
+//define main
+//define other functions
+
+
+-------------------------------------------------------------------------------------------------------
+
+
+//using structs.
+
+int main(){
+	struct student std1, std2;	//where std1, std2, are the varibales of 'struct student' type 						data
+
+					//notice we write struct student. if we don't write 'struct' 						word, compiler will not understand student is a 						structure.
+	
+	struct student stds[100];	//will define student structure array of 100 length. this is 					not a violation of array definition, because stds[1] and 					stds[52] has similar data, in similar order, similar size.
+
+
+
+	//say we have some data in this structure. and we want to access the 5th student'sname then
+
+	printf("%s", stds[4].name); // . helps us access the properties/data members of the stds[4]
+
+
+} 
+
+
+
+-------------------------------------------------------------------------------------------------------
+
+Memory Allocation of Structs
+
+
+imagine a struct.
+
+
+struct x{
+	int a;		//4byte
+	double b;	//8byte
+	char c;		//1byte
+	float d;	//4byte
+};
+
+//one might think each struct instance will be (4+8+1+4) 17 byte. BUT NO.
+//system maintains memory in chunks in power of 2^i, where 2^i must give the size of data type.
+
+so...
+
+0-4 = int a	//begins at 0, multiple of 4
+4-8 = [empty]	//empty, because double requires 8 byte, and 4 is not a multiple of 8
+8-16 = double b //begins at 8, multiple of 8
+16-17 = char c	//begins at 16, multiple of 1
+17-20 = empty	//empty, because 17 is not a multiple of 4 and float won't fit on remaining 3 bytes
+20-24 = float d //begins at 20
+
+
+
+Hence for optimisation, we change the sequence/order of defining variables.
+
+struct x{
+	int a;		//4byte
+	float d;	//4byte
+	double b;	//8byte
+	char c;		//1byte
+};
+
+0-4 = int a	//begins at 0, multiple of 4
+4-8 = float d	//begins at 4, multiple of 4
+8-16 = double b //begins at 8, multiple of 8
+16-17 = char c	//begins at 16, multiple of 16
+
+
+struct test{
+	char x;		//1byte
+	char z;		//1byte
+	char v;		//1byte
+	float w;	//4 bye
+	double y;	//8byte
+};
+
+total size = 1 + 1 + 1 + (1 wasted) + 4 + 8 = 16 byte
+
+
+
+-----------------------------------------------------------------------------------------------------
+
+
+Unions (usually used or device driver development)
+only one member can be stored at a time. hence size = greatest size of variable;
+
+NOTE: an array of union can store heterogeneous data. but memory size still follows the definition of array because the size of each element is still the maximum size of data type.
+
+
+union z {
+	int a;
+	char b;
+	double c;
+	float d;
+}
+//size is 8 byte (equal to greatest size, i.e double)
+
+using unions
+
+int main(){
+	union z test; //'union z' data type, 'test' is the variable
+	scanf("%f", test.d); //say we take input 8.534
+	scanf("%c", test.b); //say we take input 'A',then test.d 8.534 is lost and overridden by 'A'
+	scanf("%lf", test.c); // if now we input 2.5556, then test.b value 'A' is lost and overridden 				by new input 2.5556
+}
+
+
+
+-----------------------------------------------------------------------------------------------------
+
+
+'typedef' allows us to redefine data types
+
+
+int main(){
+	typedef float flo;	//we redefined float by 'flo'
+	flo f0;			
+	flo f2;			//now whenevr we write 'flo' the compiler understands we mean 'float'
+	scanf("%d", f0);
+	return 0;
+}
+
+
+//this concept is very useful in case of defining structures and unions.
+
+
+typedef struct student{
+	int rollno;
+	char name[32];
+	char addrs[];
+	int sem;
+	int yr;
+} st;		//actaully creating alias/nickname for data type struct student
+
+//now while accessing data type 'struct student', we can reduce the volume of code by writing st in place of 'struct student'
+
+
+int main(){
+	st stdn; //we just defined a 'struct student stdnt' by simply writing 'st stdnt'. less code
+}
+
+
+
+-----------------------------------------------------------------------------------------------------
+
+imagine this.
+
+
+int x;
+int *p;
+int **p;
+int fun(int, int );
+int fun(int* ;int* );
+int* fun (int*, int* );
+int (*fun) (int* , int* ); //pointing to a funtion. again, a function name is also a pointer
+		//we can have fun = add, where add is : int* add(int* x, int* y);
+int* (int* fun)(int*, int*);
+
+
+
+
+
+char c;		//character
+char* p;	//character pointer
+char* p[10];	//character pointer array. each element of this array (0-9) can hold a base address 		of string (or character array)
+char* p[10][20] //characer pointer 2d array. each element of this array (0-9)(0-19) can hold a base 		address of s string (or chacater array)
+
+
+
+
+

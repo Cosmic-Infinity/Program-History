@@ -1,0 +1,53 @@
+Linux Commands
+
+1. Create directory : mkdir <name_of_directory> <name_of_directory> ...
+2. Remove directories : rmdir <name_of_directory> <name_of_directory> ...
+3. List files and directories (listing): ls
+
+ls parameter -l (long listing):
+-rw-r--r-- 1 kiit kiit    0 Jan 10 08:50 abc.txt
+permission file  made-by being-accessed-by size-in-bytes date-and-time-of-creation filename
+1 - file, 2 - folder
+
+-rwxr-xr-x 1 kiit kiit 15960 Jan 10 09:42 a.out
+see permissions
+the first rwx is user permission (owner can read, write and execute)
+the second r-x is group persission (we can create a group of users, who can read and execute only)
+the third r-x is all persission (all is the remaining users, who can also read and execute only)
+
+ls parameter -a (all)
+shows all files, including hidden directories and files
+in all files, .. means parent directory
+in all files, . means current working directory
+
+can also string together parameters like : ls -la
+this combines long listing and show all directories
+can pas multiple parameters as well : ls -a -l
+
+list files of a specified directory : ls <name_of_directory>
+
+Parameter to show command documentation : [command] --help
+
+4. Create file : touch <name_of_file> <name_of_file> ...
+5. Check present working directory : pwd
+6. Move a file : mv <name_of_origin-file/directory> <name_of_destinstion-file/directory>
+7. Rename a file (using mv): mv <name_of_orginal-file> <name_of_final-file>
+8. Use GCC Compiler to compile file : gcc <name_of_file>
+
+Save the intermediate files of gcc : gcc <filename.c> --save-temps
+which goes as : filename.c(source) > filename.i(intermediate) > filename.s(assembly code) > filename.o(object code) > filename.out (optimised object code)
+NOTE: C is platform dependent
+
+9. Run the executable : ./<filename.out>
+10. Copy a file : cp <name_of_origin-file/directory> <name_of_destinstion-file/directory>
+11. Change present working directory : cd <name_of_directory>
+
+Directory Traversal
+. = Present Working Directory
+./ = Location in Present working directoyr
+.. = Parent of the current directory
+../ = Location in parent of the current directory
+
+Eg. cd .. : will go back one level
+Eg. mkdir ../TEST : will create TEST in the parent level of the current directory
+Eg. mv ../TEST/file.txt . : will move file.txt from the parent directory's TEST, to the current working directory 

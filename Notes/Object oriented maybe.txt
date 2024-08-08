@@ -1,0 +1,9 @@
+Overloading? same function, different number of arguments.
+
+C DOES NOT support function overloading
+
+printf("Hello");
+printf("Hello %d", x);
+
+what we see here is variable length of argument (var arg) or ellipses.
+

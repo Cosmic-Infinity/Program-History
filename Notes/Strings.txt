@@ -1,0 +1,20 @@
+There is no data type called string in C.
+All we have is charcater array.
+
+
+char name[20];
+scanf("%s",name); //NOTE this will only take the first word, i.e, until the first space. For the full word we will 				need regex.
+
+the end marker of each string is '\0' which is null.
+
+so length finding becomes a manual task with loop. there is no built in function for it.
+
+int i = 0;
+while(name[i]!='\0')
+	i++;
+printf("the length of the string is %d", i);
+
+multiword input by scanset
+
+scanf("%[^n]", &s);
+will take input until a newline character is encountered. So spaces will be taken in, and the only instance it will stop is when the \n (enter or newline) isdetected in the string

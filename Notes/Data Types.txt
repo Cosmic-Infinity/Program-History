@@ -1,0 +1,71 @@
+Basic Types in C : short, int, long, float, double, char
+
+Enumerated Type
+
+Type void : 
+
+Derived type : struct, class
+
+
+---------------------------------------------------------------------
+Character constants
+(can be use das strings as well)
+
+
+\\ = \ character
+\" = " character
+\' = 'character
+\? = ? character
+\b = backspace
+\n = newline
+\t = horizontal tab
+\a = Alert or bell
+\f = form feed
+\r = carraige retunr
+\v = vertical tab
+\ooo = octal number of one to three digits
+\xhh... = hexadecimal number of one or more digits
+
+
+---------------------------------------------------------------------
+
+Defining constants in C
+
+using #define preprocessor/macro
+using const keyword
+
+
+#define SIZE 1024;
+int main(){
+	int a[SIZE]
+}
+
+during compilation (filename.i), the name is replaced by the value 1024. Variables ont he other hand are replaced during excutaion/runtime.
+
+const type variable = value;
+
+the value of a constant cannot be changed during the program.
+
+-----------------------------------------------------------------------
+
+x = x + i;
+is the same as
+x += i;
+
+x = x * i;
+is the same as
+x *= i
+
+++i = pre increment
+i++ = post increment
+
+------------------------------------------------------------------------
+
+sizeof() = returns the size of a variable
+& = returns the address of a variable (&a)
+* = points to a variable (*a)
+condition?statement:statement = ternary condition check
+
+------------------------------------------------------------------------
+
+precedence table

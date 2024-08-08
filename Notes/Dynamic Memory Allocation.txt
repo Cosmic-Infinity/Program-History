@@ -1,0 +1,90 @@
+via - malloc , calloc, realloc , free
+
+------------------------------------------------------------------------------------------------------
+
+int size;
+...
+scanf("%d", &size);
+...
+int arr [size]		//DO NOT do this. This won't work in every system.
+
+
+int arr[100000]		//this is fine. BUT fixed size
+
+
+#define SIZE 100000
+int arr[size]		//this is fine. BUT fixed size
+
+
+Solution:
+int size;
+scanf("%d", &size);
+malloc(size*sizeof(int));	//malloc takes the number of bytes input and allocates that much 				memory chunk
+				//sizeof is preferably used because the size of vriables may vary 				from device to device. sizeOf() returns the size notwithstanding the 				system type.
+
+
+NOTE: return type of malloc is a void pointer [void *]
+void pointer can point to any type of data (general purpose). unlike int or double or char pointer, which can hold only that type of data.
+
+
+int size;
+int *arr;
+scanf("%d", &size);
+arr = (int *)malloc(size*sizeOf(int));	// we type cast the void pointer to an integer pointer
+
+//now we can use the arr[i] to use it as an array.
+
+
+------------------------------------------------------------------------------------------------------
+
+After say, we are done with the current size of the array, now we want to change the siez of the array.
+
+
+int size, size1;
+int arr*;
+scanf("%d", &size);
+arr = (int *)malloc(size*sizeOf(int));
+//...some arroperations
+//now we wish to reallocate the size of the memory
+arr = (int *)realloc(size1*sizeOf(int)) //new size.
+
+Now the probem arises, arrays are contiguous. So while expanding size, we may have the case where not enough available memory is available in a contiguous way. In this case a new contiguous memory chunk will be allocated. And the previous data will be moved here to accomodate the old and new values of increased size. The machine does it automatically and developer usually has no control over this. At times this reallocation could be a costly operation due to this moving data around. [reacclocaiton has cases like this, which is why we use this realloc() and not just another malloc]
+Reducing size is uaually fine. And the extra spaces after the reduced size are filled with garbage.
+
+NOTE : Only the memory allocation part is like this. Other operations of this array (pointer basically) and usage stays same.
+
+-------------------------------------------------------------------------------------------------------
+
+Once our work is done, we can just free the memory using free().
+
+
+int size, size1;
+int arr*;
+scanf("%d", &size);
+arr = (int *)malloc(size*sizeOf(int));
+//...some arroperations
+//now we wish free the memory
+free(arr); //memory has been freed and can noe be used for other things.
+
+-------------------------------------------------------------------------------------------------------
+
+2D Memory allocation / 2D array
+
+//noting that memory is already fragmented anyways. this approach may be a bit slower than a true array, but that won't matter much.
+//each row (each with its contiguous columns) may be stored in different memory locations.
+
+
+int **arr;
+int m, n;
+scanf("%d", &m);
+scanf("%d", &n);
+arr = (int **)malloc(m*sizeOf(int *))
+for(int i=0; i<m; i++)
+	arr[i] = (int *)malloc(n*sizeOf(int));
+
+//now the memory has been allocated! and arr can be used normally similar to an array variable.
+
+
+//the basic concept is, each row holds an integer (arr[i]), and the first column (or the only row) of arr holds the base address of those rows.
+//effectively nested pointers are being used for multidimensional input
+

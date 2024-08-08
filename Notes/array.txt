@@ -1,0 +1,11 @@
+similar data type (homogeneous data)
+continuous memory allocation
+
+int y[100] = coninuous 4 byte blocks (integer) for 100 blocks
+(Notice the data type mention)
+
+y[5] = 10 (allocation)
+int x = y[99] (access)
+
+
+take input using loops
