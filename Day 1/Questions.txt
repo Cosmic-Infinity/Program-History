@@ -1,0 +1,11 @@
+[26.07.24]
+
+1. Write a C program to read 2 integer numbers and copare the numbers using function with call by address mechanism.
+
+2. Write a C program to create an array of n elements using dynamic memory allocation. Calculate the sum of all the prime elements of this array using funciton and deallocate the memory of this array after its use.
+
+3. Write a C program to create a structure to store the information of n number of employees. Employee information includes data members as - Employee ID, Name, Designation, Basic salary, HRA (12% of basic), DA (50% of basic), then display the information the employees with gross salary. [use array of structure]
+
+4. Write a menu driven program in C to create a structure to represent complex number as real and imaginary compenents and preform the followign operation using function.
+	i.	Additation of 2 complex numbers (using call by value)
+	ii.	Multiplication of 2 complex numbers (call by address)
