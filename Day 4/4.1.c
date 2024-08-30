@@ -100,15 +100,15 @@ void insert()
     else
     {
         node *ptr = (node *)malloc(sizeof(node));
-        ptr->next = NULL;
         printf("Enter value : ");
         scanf("%d", &ptr->el);
+        ptr->next = NULL;
         if (pos == 0)
         {
             ptr->next = start;
             start = ptr;
         }
-        else if (pos == count())
+        else if (pos == count() - 1)
         {
             last->next = ptr;
             last = ptr;
@@ -165,10 +165,9 @@ void del()
             node *temp2 = temp->next;
             temp->next = temp2->next;
             free(temp2);
-            printf("Deleted!");
         }
     }
-
+    printf("Deleted!");
     return;
 }
 

@@ -21,8 +21,8 @@ void traverse(node *);
 int main()
 {
     int max1 = 0, max2 = 0, i = 0, n;
-    printf("Polynomial 1 : \n");
-    printf("Enter highest power of polynomial : \n");
+    printf("Polynomial 1 - \n");
+    printf("Enter highest power of polynomial : ");
     scanf("%d", &max1);
     for (i = max1; i > -1; i--)
     {
@@ -40,7 +40,7 @@ int main()
             create(&l1, n, i);
     }
 
-    printf("Polynomial 2 : \n");
+    printf("Polynomial 2 - \n");
     printf("Enter highest power of polynomial : \n");
     scanf("%d", &max2);
     for (i = max2; i > -1; i--)

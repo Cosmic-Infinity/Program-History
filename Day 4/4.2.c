@@ -38,7 +38,7 @@ int main()
             create(n);
         else
         {
-            printf("Invalid input detected.\n");
+            printf("Invalid input detected.");
             printf("Stopped taking input\n");
             break;
         }
@@ -46,7 +46,7 @@ int main()
     n = 0;
     scanf("%c");
     printf("Linked list generated successfully.\n");
-    printf("-----MENU-----\n1.Insert.\n2.Delete.\n3.Count\n4.Traverse.\n5.Search.\n6.Sort (Ascending)\n7.Reverse.\n8.Exit");
+    printf("-----MENU-----\n1.Insert.\n2.Delete.\n3.Count\n4.Traverse.\n5.Search.\n6.Sort\n7.Reverse.\n8.Exit");
     while (1)
     {
         printf("\nEnter choice : ");
@@ -222,7 +222,7 @@ void search()
     else
     {
 
-        printf("Enter number to search : \n");
+        printf("Enter number to search : ");
         scanf("%d", &n);
         node *i = start;
         while (i)
