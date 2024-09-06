@@ -18,8 +18,9 @@ void create(int);
 int main()
 {
     int n, num, j = 0;
-    printf("Enter no.of nodes : \n");
+    printf("Enter no.of nodes : ");
     scanf("%d", &n);
+    printf("Enter values : \n");
     while (j < n)
     {
         if (scanf("%d", &num))
@@ -31,11 +32,14 @@ int main()
         {
             printf("Invalid input detected.\n");
             printf("Rejected input. Try again.\n");
+            while (getchar() != '\n')
+                ;
         }
     }
 
     printf("Circular Linked List : \n");
     node *i = start;
+    j = 0;
     while (j < n)
     {
         printf("%d -> ", i->el);
@@ -59,6 +63,6 @@ void create(int n)
     {
         last->next = ptr;
         last = ptr;
-        last->next = start;
     }
+    last->next = start;
 }

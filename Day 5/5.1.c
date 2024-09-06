@@ -12,12 +12,10 @@ iii. Traverse the list
 typedef struct Node
 {
     int data;
-    struct Node *prev;
-    struct Node *next;
+    struct Node *prev, *next;
 } node;
 
-node *start = NULL;
-node *last = NULL;
+node *start = NULL, *last = NULL;
 
 void create(int);
 void insert();
@@ -63,7 +61,6 @@ int main()
             break;
         case 4:
             return 0;
-            break;
         default:
             printf("INVALID choice.");
         }
@@ -79,10 +76,7 @@ void create(int n)
     ptr->prev = NULL;
     ptr->data = n;
     if (start == NULL)
-    {
-        start = ptr;
-        last = start;
-    }
+        start = last = ptr;
     else
     {
         last->next = ptr;
@@ -106,15 +100,14 @@ void insert()
         node *ptr = (node *)malloc(sizeof(node));
         printf("Enter value : ");
         scanf("%d", &ptr->data);
-        ptr->prev = NULL;
-        ptr->next = NULL;
+        ptr->prev = ptr->next = NULL;
         if (pos == 0)
         {
             ptr->next = start;
             start->prev = ptr;
             start = ptr;
         }
-        else if (pos == count() - 1)
+        else if (pos == count())
         {
             last->next = ptr;
             ptr->prev = last;
@@ -123,8 +116,7 @@ void insert()
         else
         {
             int i = 0;
-            node *temp;
-            temp = start;
+            node *temp = start;
             while (i < pos - 1)
             {
                 temp = temp->next;
@@ -173,8 +165,7 @@ void del()
         else
         {
             int i = 0;
-            node *temp;
-            temp = start;
+            node *temp = start;
             while (i < pos)
             {
                 temp = temp->next;

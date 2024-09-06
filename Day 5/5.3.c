@@ -3,8 +3,6 @@ Write a program to represent the given sparse matrix using header single linked 
 display it
 */
 
-// WAP to perform transpose of a given sparse matrix in 3-tuple format
-
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -14,21 +12,28 @@ typedef struct Node
     int i, j, n;
     struct Node *next;
 } node;
-node *start = NULL, *last = NULL;
+typedef struct NodeHead
+{
+    int rows, columns, n;
+    struct Node *next;
+} node_head;
+
+node_head *start;
+node *last;
 
 int main()
 {
     int i, j, n, count = 0;
-    start = (node *)malloc(sizeof(node));
+    start = (node_head *)malloc(sizeof(node_head));
     start->next = NULL;
-    last = start;
+    last = (node *)start;
     printf("Enter size of sparse matrix (MxN) : \n");
-    scanf("%d", &start->i);
-    scanf("%d", &start->j);
-
-    for (i = 0; i < start->i; i++)
+    scanf("%d", &start->rows);
+    scanf("%d", &start->columns);
+    printf("Enter elements : \n");
+    for (i = 0; i < start->rows; i++)
     {
-        for (j = 0; j < start->j; j++)
+        for (j = 0; j < start->columns; j++)
         {
             scanf("%d", &n);
             if (n != 0)
@@ -42,7 +47,12 @@ int main()
 
     printf("Output : \n");
 
-    node *x = start;
+    node *x = start->next;
+    if (start)
+    {
+        printf("%d\t%d\t%d", start->rows, start->columns, start->n);
+        printf("\n");
+    }
     while (x)
     {
         printf("%d\t%d\t%d", x->i, x->j, x->n);
