@@ -52,7 +52,7 @@ int main()
         case 4:
             printf("Current Stack : \nTOP -> ");
             display();
-            printf(" BOTTOM");
+            printf(" BOTTOM\n");
             break;
         case 5:
             return 0;
@@ -82,7 +82,7 @@ int pop()
 {
     if (isEmpty())
     {
-        printf("Underflow");
+        printf("Underflow\n");
         return INT_MAX;
     }
     else

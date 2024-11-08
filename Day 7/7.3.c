@@ -38,9 +38,7 @@ int main()
     while (1)
     {
         printf("Enter choice : ");
-        if (scanf("%d", &choice))
-            ;
-        else
+        if (!scanf("%d", &choice))
         {
             printf("Enter only integers");
             continue;
@@ -139,5 +137,5 @@ void traverse()
     printf("Current Queue is :\nFRONT->");
     for (int i = front; i != rear; i = (i + 1) % size)
         printf("%d->", Q[i]);
-    printf("REAR\n");
+    printf("%d->REAR\n", Q[rear]);
 }

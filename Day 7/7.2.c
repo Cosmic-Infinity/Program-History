@@ -91,7 +91,7 @@ void enqueue(int n)
         rear->next = ptr;
         rear = rear->next;
     }
-    printf("Enqueues!");
+    // printf("Enqueues!");
 }
 
 int dequeue()

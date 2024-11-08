@@ -10,7 +10,7 @@ e. display stack elements
 */
 
 #include <stdio.h>
-#include <locale.h>
+// #include <locale.h>
 #define SIZE 10
 
 void push(int);
@@ -52,12 +52,12 @@ int main()
         case 5:
             printf("Current Stack : \nTop -> ");
             display();
-            printf("Bottom");
+            printf("Bottom\n");
             break;
         case 6:
             return 0;
         default:
-            printf("INVALID input.");
+            printf("INVALID input.\n");
             break;
         }
     }

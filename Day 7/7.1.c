@@ -38,11 +38,11 @@ int main()
     while (1)
     {
         printf("Enter choice : ");
-        if (scanf("%d", &choice))
-            ;
-        else
+        if (scanf("%d", &choice) != 1)
         {
-            printf("Enter only integers");
+            printf("Enter only integers\n");
+            while (getchar() != '\n')
+                ;
             continue;
         }
         switch (choice)
@@ -51,8 +51,14 @@ int main()
             if (!isFull())
             {
                 printf("Enter value : ");
-                scanf("%d", &n);
-                enqueue(n);
+                if (scanf("%d", &n) == 1)
+                    enqueue(n);
+                else
+                {
+                    printf("Invalid Input\n");
+                    while (getchar() != '\n')
+                        ;
+                }
             }
             else
                 printf("Queue is FULL already.\n");
