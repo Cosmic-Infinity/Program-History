@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Perfect_42
+comment1.params=nn
+comment1.target=Perfect_42(int)
+comment2.params=i
+comment2.target=int\ sum_of_factors(int)
+comment3.params=
+comment3.target=void\ check()
+comment4.params=atgs
+comment4.target=void\ main(java.lang.String[])
+numComments=5
