@@ -1,0 +1,169 @@
+Pointer Decleration
+--------------------
+
+int* pntr;
+OR
+int *pntr;
+
+
+//this will declare an integer pointer, but the 'pntr' can hold an address
+
+int x;
+pntr = &x;
+
+
+say you have a program
+main{
+	int x = 10, y = 7;
+	swap(x,y);
+	printf("%d %d", x, y);
+		//this will print 10 7. No effect of swapping because the swapping will occur on local instances 		of those variables and didn't modify the original values here. becauese call by value.
+}
+
+
+
+instead if we pass addresses, 
+
+main{
+	int x = 10, y = 7;
+	swap(&x,&y); //sending address
+	printf("%d %d", x, y);
+		//this will print 10 7. No effect of swapping because the swapping will occur on local instances 		of those variables and didn't modify the original values here. becauese call by value.
+}
+void swap(int *x, int *y){ //receiving address
+	int z;
+	z = *x; //this will return the data stored in the address *x. If we had done z = x, it would've tried 				putting the address stored in x to z;
+		//think of * as the toggle between data and address! for data it returns address, for address it 			returns the corresponding data.
+	*x = *y;
+	*y = z;
+
+}
+
+
+NOTE : * in variable name is a toggle between address and data.
+NOTE : * in variable decleration declares a pointer storage variable. like integer pointer can store integer 			address. double pointer can store a double variable's address.
+NOTE : & always gives the address of the variable
+
+----------------------------------------------------------------------------------------------
+
+NOTE: A pointer can hold a pointer as well!
+
+int x = 10;
+int *ptr;
+int **ptr2; //pointer pointer storage. 
+
+ptr = &x;
+ptr2 = &ptr; //holding address of ptr.
+
+
+printf("%d", x); //prints data x
+printf("%d", ptr); //prints address of x
+printf("%d", *ptr); //prints data x
+printf("%d", ptr2); //prints address of ptr
+printf("%d", *ptr); //prints address of x
+printf("%d", **ptr); //prints data x
+
+
+------------------------------------------------------------------------------------------------
+
+//when passing an array to a function, also pass the size of the array. we have yet to learn a keyword/property equivalent to .length
+
+//while receiveing array in function 
+
+receiving(int arr[]){...} //we may or may not declare array size
+
+//but we must declare the size in 2d arrays
+
+receiving(int arr[10][20]) //we must declare array size
+
+//without this, the receiving function will have no idea where the rows and columns start for the 200 elements. OR simply how the size(800bytes) is divided into rows and columns
+
+we may also -
+
+reciving(int arr[][20]) //this will work! because row major is split by the number of columns. if we provide the 				function atleast the number of columns, it can auto split to new row after every 				20 columns, giving us 10 rows for 800byte.
+
+this logic can be extended n dimensional array, in which case we must declare (n-1) sizes.
+
+------------------------------------------------------------------------------------------------
+
+NOTE : the array name always has the base address of the array. i.e *arr == *arr[0]
+
+main(){
+	int arr[10], size=10;
+	//input logic.
+	calculate_sum(arr, size);
+}
+void calculate_sum(int* ptr, size){ //received the base address of the array
+	int sum=0;
+	for(int i=0; i<=size; i++)
+		sun += ptr[i]; //another form! since ptr is basically the base address of the array
+	return sum;
+}
+
+
+void calculate_sum(int* ptr, size){ //received the base address of the array
+	int sum=0;
+	for(int i=0; i<=size; i++)
+		sun += *(ptr+i); //another form! since data type is known, +i goes to the next element address. 
+	return sum;
+}
+
+
+void calculate_sum(int* ptr, size){ //received the base address of the array
+	int sum=0;
+	for(int i=0; i<=size; i++)
+		sun += *(ptr++); //another form! pointer increments to go to the next address.
+	return sum;
+}
+
+
+void calculate_sum(int arr[], size){ //received the base address of the array, NOTICE the array variable here
+	int sum=0;
+	for(int i=0; i<=size; i++)
+		sun += *(arr+i); //another form! same concept 
+	return sum;
+}
+
+BUT
+
+sum+= *(arr++) //will not work. because arr is the base address of the array. by this statement we are trying to 			do arr = arr+1; i.e trying to change the base address. which doesn't really make sense.	We 			can use/increment/decrement a pointer (which 'contains' the base address), but not modify 			the actual base address itself.
+
+
+--------------------------------------------------------------------------------------------------------
+
+
+NOTE : C DOES NOT support call by reference. [from the founders book.] some books may erroneously say otherwise. Pointer passing 
+	 C++ supports call reference.
+
+
+
+--------------------------------------------------------------------------------------------------------
+
+printf(), scanf(), code isn't present in stdio.h. only the prototypes are present there. the actual code is present in some system libraries.
+
+scanf("%d", &x) takes &x becasue C is call by value.
+deifinition code : scanf(char *p, int *variable){......}
+
+this address is needed so that scanf can modify the address to store the value captured by the scanf function.
+if it were only x (variable and not a pointer) in scanf function, scanf will not be able to update the variable value captured in the keyboard input logic.
+
+printf("Hello");
+OR
+printf("Hello %s", name) //on the other hand, does not need to update any value, hence no pointers required here.
+
+
+Remember : C also does not support function overloading, so multiple varibales are handles by ellipses or variable length of argument.
+
+-----------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+

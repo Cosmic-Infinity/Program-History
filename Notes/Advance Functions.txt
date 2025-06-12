@@ -1,0 +1,87 @@
+Command Line arguments
+
+NOT the same as scanf() input. Imagine command ls, taking argument -l, or gcc test.c, or gcc test.c -o output.c, these are cases of command line arguments.
+
+basically arguments passed at startup/initiation.
+
+write these variables in main(<here>)
+NOTE: This behaviour is special for only the main function.
+
+int main(int argc, char *argv[]){ //one is argument count, another argument value
+	for(int i=0; i<argc; i++)
+	printf("%s", argv[i]); //see this example code for instance.
+}
+
+if command: gcc test.c -o output
+argv[0] = gcc
+argv[1] = test.c
+argv[2] = -o
+argv[3] = output
+
+this kind of mapping happens automaitically
+the value of argc is calculated automatically by the system, counting the number of argument values.
+
+
+-----------------------------------------------------------------------------------------------------
+
+Variable length of Argument (va)[presend in stdlib]
+
+int avg(int count, ...){
+
+	va_list lst;			//va_list is a list data structure. basically void pointer.
+	int sum=0;
+	va_start(count, lst);
+	for(int i=0; i<count; i++){
+		sum+= va_arg(lst, int);	//iterates automatically. no need lst++. gives gave 'int' 					data becauese that's what is mentioned.	
+	}
+	va_end();			//va_start to va_end behaves like a block
+}
+
+
+-----------------------------------------------------------------------------------------------------
+
+#include <something.h> //will be searched by the compiler in the user/include directory
+#include <abc/def/something.h> //path supported. compile will look for this path in include directiry
+#include "something.h" //will be searched in the present working directory
+#include "abc/def/gh/something.h" //paths are supported here
+
+-----------------------------------------------------------------------------------------------------
+
+Preprocessor directives / Macros
+
+
+#include <stdio.h>
+int min = 1;
+#define MAX = 10;
+
+preprocessing test.c -> test.i
+in this stage preprocessing occurs. That is, preprocessing directives are replaced by the contents of the header file.
+#include <stdio.h> is replaced by the whole content of stdio.h
+for every occurence of MAX, it gets replaced by the value 10.
+
+Also possible :
+
+#if(condition)
+#else
+#end if
+preprocessor condition, to run during preprocessing. Helps in compiling where the condition check is done beofore including specific files.
+
+
+-----------------------------------------------------------------------------------------------------
+
+
+const int x = 10;
+
+cannot be altered any furthur.
+
+-----------------------------------------------------------------------------------------------------
+
+static : separate memory allocated. which is retained even with different function calls.
+
+-----------------------------------------------------------------------------------------------------
+
+Linker & Loader
+
+When the a.out file is ran, the program is loaded into the main memory. Then comes the linker, which looks at the compiled headers (remember the #include files were headers, not actual code), and looks for the corresponding compiled code in the system's compiled libraries (.so - static object files). Linking them.
+Then comes the loader which loads the corresponding linked files.
+

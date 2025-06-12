@@ -1,0 +1,40 @@
+
+code reusability
+
+(procedural language, platform dependence later)
+
+
+
+int add (int, int); //funcation ddecleration or prototype. This should be written before main.
+data-type func.-name parameter/argument
+
+-------------------------------------------------------------------
+
+int add(int x, int y){ //function definition
+	int r;
+	r=x+y;
+	return r;
+}
+
+-------------------------------------------------------------------
+
+if the function is defined before main, we may skip the function prototype.Though avoid it. When the functions are called out of order, the called function must have all other required functions defined before it. Doing it becomes difficult for larger projects. So best practice is to define the method prototype right after the header files.
+
+-------------------------------------------------------------------
+
+C is PROCEDURAL
+C does NOT support overloading.
+	instead of overloading we use variable argument length. may be discussed later.
+
+--------------------------------------------------------------------
+
+a seaprate memory area is created for every function. (therefore we can have same variable name in different function, and they won't conflict)
+
+when a primitive data is sent, the actual values of the variables are sent.
+
+---------------------------------------------------------------------
+
+preferbly use lowercase for function names with words separated by underscore.
+
+---------------------------------------------------------------------
+

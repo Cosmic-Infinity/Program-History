@@ -1,0 +1,58 @@
+doing some operations on file. to store data. or to load data from file.
+
+three basic steps :
+1. open file
+2. do operations
+3. close file
+
+int main(){
+	
+	FILE *fptr;
+	fptr = fopen("abc.txt", "r"); //opening file
+	//operations
+	fclose(); //closing
+}
+
+
+
+fopen parameter :
+		"r"  (read only, cannot create)	//doesn't exist - doesn't create - segmenatation 							fault)
+		"w"  (write only, can create) 	//overrides the whole file when anything is written.
+		"a"  (append only)		//appends the values to the end (modifies) when 						anyhthing is written
+		
+		"r+" (read+write, doesn't exist - doesn't create it)		
+		"w+" (write+read, doesn't exist - creates it) ALWAYS cleans the file first :(
+		"a+" (append+read, doesn't exist - create it)
+		
+		"rb"		//read binary	
+		"wb"		//write binary
+		"ab"		//append binary
+
+
+
+
+
+int main(){
+	FILE *fp1, fp2;
+	int x;
+	fp1 = fopen("abc.txt", "r");
+	fp2 = fopen("def.txt", "w");
+	
+	fscanf(fp1, "%d", &x);	//fscanf() reads the value FROM the file pointer and places it in x.
+				
+				//fscanf takes file pointer as the first parameter. even if the file 				pointer is the last parameter in fscanf(), it may compile. But the 				compiler will face ambiguity when doing so. It will try to take an 				input and place that input in fp1. That isn't what we want. We want 				to take an input from fp1. So this formatter
+	
+	while(fscanf(fp1, "%d", &x) != EOL){	//EOL is a preprocessor directive defined in stdio.
+		
+		fprintf(fp2, "&d", x);		//writes to the file pointer 2.
+	}
+	fclose(fp1);
+	fclose(fp2);
+	return(0);
+}
+
+
+REMEMBER : user permissions. example, if read permission isn't available on a file, it will appear invisible to fscanf() and hence give segmentation fault. Lookup? 'chmod' - https://en.wikipedia.org/wiki/Chmod
+
+
+

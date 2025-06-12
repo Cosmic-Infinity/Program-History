@@ -1,0 +1,11 @@
+macro #define
+
+global variable (avoid)
+
+local varibale
+
+
+NOTE :	register int i; will save the integer in cpu register. Extremely quick access. but system decides if it 	actually gets stored in a rigister, depending on the current state of the system and availability of 	registers.
+	auto int i; this is by default. automatically managed.
+	static int i; defined outside the function's scope. and can be accessed by other static data members.
+	extern int i; for accessing variable from other files

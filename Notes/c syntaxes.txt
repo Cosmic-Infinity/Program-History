@@ -1,0 +1,75 @@
+integer : %d [4 bytes]
+float : %f [4 byte]
+char : %c [1 byte]
+
+
+int n, m;
+print("enter a numeber");
+scanf("%d",&n);
+m = n*n;
+printf("result is %d", m);
+
+-----------------------------------------------------------------------
+
+Programming Consructs
+1. if-else, switch-case
+2. for, while, do-while
+
+-----------------------------------------------------------------------
+
+Operators
+
+= : Assignment
+== : Equals check
+!= : Not equals
+>= : Greater than equals
+<= : Less than equals
+>> : Right bit shift
+<< : Left bit shift
+
+% : modulus/reminder
+
++-*/ : self explanatory
+
+
+-----------------------------------------------------------------------
+
+Conditionals
+
+if(m>n)
+printf("m is larger");
+else
+printf("n is larger");
+
+
+-------------------------------------------------------------------------
+
+Data Type	Format Specifier
+
+int			%d
+char			%c
+float			%f
+double			%lf
+short int		%hd
+unsigned int		%u
+long int		%li
+long long int		%lli
+
+--------------------------------------------------------------------------
+
+
+printf("%f", 22/7);
+
+this will print error out saying 22/7 is int.
+So better to write
+printf("%f", (float)22/7);
+which prints 3.142857 (6 digits after .)
+
+then we can write
+printf("%3.2f", (float)22/7);
+
+which will take 3 significant values of the result (22/7), the out of that take 2 digits after the . (which is shown as "3"."2")
+
+--------------------------------------------------------------------------
+
+preferably declare all variables at the beginning of the program, yes even loop variables. Some C compilers may complain otherwise.
