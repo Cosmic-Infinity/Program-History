@@ -1,0 +1,21 @@
+Nesting queries
+
+> select name,roll from student where cgpa=(select max(cgpa) from student;);
+
+
+Group by
+
+(imagine windows file explorer's sort by group by.)
+> select <attribute_x>,<attributes> from <tablename> group by  <attribute_x>
+
+> select Branch,max(cgpa),... from student group by Branch;
+
+
+switch statement
+
+> select location,temp,
+	case
+		when temp>30 then 'HOT'
+		when temp=>20 and temp<=30 then 'MEDIUM'
+		else 'COLD'
+	end as "status" from <tablename>;

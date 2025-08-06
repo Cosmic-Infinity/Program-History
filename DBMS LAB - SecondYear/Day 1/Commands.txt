@@ -1,0 +1,42 @@
+> connect system/kiit [root user for our system]
+
+> connect <user>/<password> [connect to an user account]
+
+> create user <name> identified by <password>; [create a database user account]
+
+> grant dba to <user>; [grant database admin access to user]
+
+> drop user <user>; [use as root to delete a user]
+
+> --something [comment]
+
+> /*something*/ [comment]
+
+> spool "path to spool file"; [spool/log to specified file]
+
+> spool off [turn off spooling/logging]
+
+> show user;
+
+> create table table_name(column_name data_type(length_of_data), column_name data_type(length_of_data)...);
+
+NOTE: datatype number can be (total_length , deciaml_length) which will support precision/decimal values.
+
+> select * from table_name; [wildcard selected. show all of table]
+
+> desc table_name; [table description]
+
+> set linesize 200; [horizontal alignment fixing]
+
+> set pagesize 200; [vertical alignment fixing]
+
+> insert into Table_name values (number_data, 'char_data', 'date_data_12-Nov-23', 'char_data_CCU');
+
+> insert into Emp values (&column_name_emp_id, '&column_name_emp_name', '&column_name_hiring_date', '&column_name_Address'); [once execued, just press / to keep inserting data quickly]
+
+NOTE: / just copies the last entered command. so use it after insert into to quickly enter data. If you want to you can use it to repeat last commands as well.
+
+> commit [save the table]
+
+> select current_timestamp from dual; [print current time]
+

@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=Main20
+comment0.text=\r\n\r\n20.\ **Package\ Conflict\ Resolution\:**\r\nCreate\ two\ packages\:\ `com.example.a`\ with\ a\ class\ `Person`\ and\ `com.example.b`\r\n\ with\ another\ `Person`\ class.\ Write\ a\ program\ that\ uses\ both\ `Person`\ classes\ in\r\n\ the\ same\ class.\ Demonstrate\ how\ to\ resolve\ naming\ conflicts\ by\ using\ fully\ qualified\ names\ for\ each\ class.\r\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+numComments=2

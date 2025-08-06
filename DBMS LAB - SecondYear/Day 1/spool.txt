@@ -1,0 +1,256 @@
+SQL> select current_timestamp from dual;
+
+CURRENT_TIMESTAMP                                                                                                                                                                                       
+---------------------------------------------------------------------------                                                                                                                             
+17-DEC-24 03.00.36.873000 PM +05:30                                                                                                                                                                     
+
+SQL> show user;
+USER is "SHUBHAM"
+
+SQL> set linesize 100;
+SQL> set pagesize 30;
+
+SQL> create table Employee_table (EMPNO NUMBER(4), ENAME VARCHAR(10), JOB VARCHAR(10), MGR NUMBER(4),HIREDATE DATE, SAL NUMBER(4), COMM NUMBER(4), DEPTNO NUMBER(2));
+
+Table created.
+
+SQL> DESC Employee_table 
+ Name                                                  Null?    Type
+ ----------------------------------------------------- -------- ------------------------------------
+ EMPNO                                                          NUMBER(4)
+ ENAME                                                          VARCHAR2(10)
+ JOB                                                            VARCHAR2(10)
+ MGR                                                            NUMBER(4)
+ HIREDATE                                                       DATE
+ SAL                                                            NUMBER(4)
+ COMM                                                           NUMBER(4)
+ DEPTNO                                                         NUMBER(2)
+
+SQL>  insert into Employee_table  values (&empno, '&ename', '&job', &mgr ,'&hiredate', &sal, &comm, &dept);
+Enter value for empno: 7369
+Enter value for ename: SMITH
+Enter value for job: CLERK
+Enter value for mgr: 7902
+Enter value for hiredate: 17-DEC-80
+Enter value for sal: 800
+Enter value for comm: NULL
+Enter value for dept: 20
+old   1:  insert into Employee_table  values (&empno, '&ename', '&job', &mgr ,'&hiredate', &sal, &comm, &dept)
+new   1:  insert into Employee_table  values (7369, 'SMITH', 'CLERK', 7902 ,'17-DEC-80', 800, NULL, 20)
+
+1 row created.
+
+SQL>  insert into Employee_table  values (&empno, '&ename', '&job', &mgr ,'&hiredate', &sal, &comm, &dept);
+Enter value for empno: 7499
+Enter value for ename: ALLEN
+Enter value for job: SALESMAN
+Enter value for mgr: 7698
+Enter value for hiredate: 20-FEB-81
+Enter value for sal: 1600
+Enter value for comm: 300
+Enter value for dept: 30
+old   1:  insert into Employee_table  values (&empno, '&ename', '&job', &mgr ,'&hiredate', &sal, &comm, &dept)
+new   1:  insert into Employee_table  values (7499, 'ALLEN', 'SALESMAN', 7698 ,'20-FEB-81', 1600, 300, 30)
+
+1 row created.
+
+SQL> /
+Enter value for empno: 7521
+Enter value for ename: WARD
+Enter value for job: SALESMAN
+Enter value for mgr: 7698
+Enter value for hiredate: 22-FEB-81
+Enter value for sal: 1250
+Enter value for comm: 500
+Enter value for dept: 30
+old   1:  insert into Employee_table  values (&empno, '&ename', '&job', &mgr ,'&hiredate', &sal, &comm, &dept)
+new   1:  insert into Employee_table  values (7521, 'WARD', 'SALESMAN', 7698 ,'22-FEB-81', 1250, 500, 30)
+
+1 row created.
+
+SQL> /
+Enter value for empno: 7566
+Enter value for ename: JONES
+Enter value for job: MANAGER
+Enter value for mgr: 7839
+Enter value for hiredate: 02-APR-81
+Enter value for sal: 2975
+Enter value for comm: NULL
+Enter value for dept: 20
+old   1:  insert into Employee_table  values (&empno, '&ename', '&job', &mgr ,'&hiredate', &sal, &comm, &dept)
+new   1:  insert into Employee_table  values (7566, 'JONES', 'MANAGER', 7839 ,'02-APR-81', 2975, NULL, 20)
+
+1 row created.
+
+SQL> /
+Enter value for empno: 7654
+Enter value for ename: MARTIN
+Enter value for job: SALESMAN
+Enter value for mgr: 7698
+Enter value for hiredate: 28-SEP-81
+Enter value for sal: 1250
+Enter value for comm: 1400
+Enter value for dept: 30
+old   1:  insert into Employee_table  values (&empno, '&ename', '&job', &mgr ,'&hiredate', &sal, &comm, &dept)
+new   1:  insert into Employee_table  values (7654, 'MARTIN', 'SALESMAN', 7698 ,'28-SEP-81', 1250, 1400, 30)
+
+1 row created.
+
+SQL> /
+Enter value for empno: 7698
+Enter value for ename: BLAKE
+Enter value for job: MANAGER
+Enter value for mgr: 7839
+Enter value for hiredate: 01-MAY-81
+Enter value for sal: 2850
+Enter value for comm: NULL
+Enter value for dept: 30
+old   1:  insert into Employee_table  values (&empno, '&ename', '&job', &mgr ,'&hiredate', &sal, &comm, &dept)
+new   1:  insert into Employee_table  values (7698, 'BLAKE', 'MANAGER', 7839 ,'01-MAY-81', 2850, NULL, 30)
+
+1 row created.
+
+SQL> /
+Enter value for empno: 7782
+Enter value for ename: CLARK
+Enter value for job: MANAGER
+Enter value for mgr: 7839
+Enter value for hiredate: 09-JUN-81
+Enter value for sal: 2450
+Enter value for comm: NULL
+Enter value for dept: 10
+old   1:  insert into Employee_table  values (&empno, '&ename', '&job', &mgr ,'&hiredate', &sal, &comm, &dept)
+new   1:  insert into Employee_table  values (7782, 'CLARK', 'MANAGER', 7839 ,'09-JUN-81', 2450, NULL, 10)
+
+1 row created.
+
+SQL> /
+Enter value for empno: 7788
+Enter value for ename: SCOTT
+Enter value for job: ANALYST
+Enter value for mgr: 7566
+Enter value for hiredate: 09-NOV-81
+Enter value for sal: 3000
+Enter value for comm: NULL
+Enter value for dept: 20
+old   1:  insert into Employee_table  values (&empno, '&ename', '&job', &mgr ,'&hiredate', &sal, &comm, &dept)
+new   1:  insert into Employee_table  values (7788, 'SCOTT', 'ANALYST', 7566 ,'09-NOV-81', 3000, NULL, 20)
+
+1 row created.
+
+SQL> /
+Enter value for empno: 7839
+Enter value for ename: KING
+Enter value for job: PRESIDENT
+Enter value for mgr: NULL
+Enter value for hiredate: 17-NOV-81
+Enter value for sal: 5000
+Enter value for comm: NULL
+Enter value for dept: 10
+old   1:  insert into Employee_table  values (&empno, '&ename', '&job', &mgr ,'&hiredate', &sal, &comm, &dept)
+new   1:  insert into Employee_table  values (7839, 'KING', 'PRESIDENT', NULL ,'17-NOV-81', 5000, NULL, 10)
+
+1 row created.
+
+SQL> /
+Enter value for empno: 7844
+Enter value for ename: TURNER
+Enter value for job: SALESMAN
+Enter value for mgr: 7698
+Enter value for hiredate: 08-SEP-81
+Enter value for sal: 1500
+Enter value for comm: 0
+Enter value for dept: 30
+old   1:  insert into Employee_table  values (&empno, '&ename', '&job', &mgr ,'&hiredate', &sal, &comm, &dept)
+new   1:  insert into Employee_table  values (7844, 'TURNER', 'SALESMAN', 7698 ,'08-SEP-81', 1500, 0, 30)
+
+1 row created.
+
+SQL> /
+Enter value for empno: 7876
+Enter value for ename: ADAMS
+Enter value for job: CLERK
+Enter value for mgr: 7788
+Enter value for hiredate: 23-SEP-81
+Enter value for sal: 1100
+Enter value for comm: NULL
+Enter value for dept: 20
+old   1:  insert into Employee_table  values (&empno, '&ename', '&job', &mgr ,'&hiredate', &sal, &comm, &dept)
+new   1:  insert into Employee_table  values (7876, 'ADAMS', 'CLERK', 7788 ,'23-SEP-81', 1100, NULL, 20)
+
+1 row created.
+
+SQL> /
+Enter value for empno: 7900
+Enter value for ename: JAMES
+Enter value for job: CLERK
+Enter value for mgr: 7698
+Enter value for hiredate: 03-DEC-81
+Enter value for sal: 950
+Enter value for comm: NULL
+Enter value for dept: 20
+old   1:  insert into Employee_table  values (&empno, '&ename', '&job', &mgr ,'&hiredate', &sal, &comm, &dept)
+new   1:  insert into Employee_table  values (7900, 'JAMES', 'CLERK', 7698 ,'03-DEC-81', 3000, NULL, 20)
+
+1 row created.
+
+SQL> /
+Enter value for empno: 7902
+Enter value for ename: FORD
+Enter value for job: ANALYST
+Enter value for mgr: 7566
+Enter value for hiredate: 03-DEC-81
+Enter value for sal: 3000
+Enter value for comm: NULL
+Enter value for dept: 20
+old   1:  insert into Employee_table  values (&empno, '&ename', '&job', &mgr ,'&hiredate', &sal, &comm, &dept)
+new   1:  insert into Employee_table  values (7902, 'FORD', 'ANALYST', 7566 ,'03-DEC-81', 3000, NULL, 20)
+
+1 row created.
+
+SQL> /
+Enter value for empno: 7439
+Enter value for ename: MILLER
+Enter value for job: CLERK
+Enter value for mgr: 7782
+Enter value for hiredate: 23-JAN-82
+Enter value for sal: 1300
+Enter value for comm: NULL
+Enter value for dept: 10
+old   1:  insert into Employee_table  values (&empno, '&ename', '&job', &mgr ,'&hiredate', &sal, &comm, &dept)
+new   1:  insert into Employee_table  values (7439, 'MILLER', 'CLERK', 7782 ,'23-JAN-82', 1300, NULL, 10)
+
+1 row created.
+
+SQL> SELECT * FROM Employee_table ;
+
+     EMPNO ENAME      JOB               MGR HIREDATE         SAL       COMM     DEPTNO              
+---------- ---------- ---------- ---------- --------- ---------- ---------- ----------              
+      7369 SMITH      CLERK            7902 17-DEC-80        800                    20              
+      7499 ALLEN      SALESMAN         7698 20-FEB-81       1600        300         30              
+      7521 WARD       SALESMAN         7698 22-FEB-81       1250        500         30              
+      7566 JONES      MANAGER          7839 02-APR-81       2975                    20              
+      7654 MARTIN     SALESMAN         7698 28-SEP-81       1250       1400         30              
+      7698 BLAKE      MANAGER          7839 01-MAY-81       2850                    30              
+      7782 CLARK      MANAGER          7839 09-JUN-81       2450                    10              
+      7788 SCOTT      ANALYST          7566 09-NOV-81       3000                    20              
+      7839 KING       PRESIDENT             17-NOV-81       5000                    10              
+      7844 TURNER     SALESMAN         7698 08-SEP-81       1500          0         30              
+      7876 ADAMS      CLERK            7788 23-SEP-81       1100                    20              
+      7900 JAMES      CLERK            7698 03-DEC-81        950                    20              
+      7902 FORD       ANALYST          7566 03-DEC-81       3000                    20              
+      7439 MILLER     CLERK            7782 23-JAN-82       1300                    10              
+
+14 rows selected.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> select current_timestamp from dual;
+
+CURRENT_TIMESTAMP                                                                                   
+---------------------------------------------------------------------------                         
+17-DEC-24 03.31.02.766000 PM +05:30                                                                 
+
+SQL> spool off

@@ -1,0 +1,336 @@
+SQL> select * from dual;
+
+D                                                                               
+-                                                                               
+X                                                                               
+
+SQL> select upper('saumya')  from dual;
+
+UPPER(                                                                          
+------                                                                          
+SAUMYA                                                                          
+
+SQL> select upper ('saumya ') as Name from dual;
+
+NAME                                                                            
+-------                                                                         
+SAUMYA                                                                          
+
+SQL> select lower ('SAUMYA') from dual;
+
+LOWER(                                                                          
+------                                                                          
+saumya                                                                          
+
+SQL> select initcap ('saumya'), initcap ('SAUMYA') from dual;
+
+INITCA INITCA                                                                   
+------ ------                                                                   
+Saumya Saumya                                                                   
+
+SQL> select length ('saumya') from dual;
+
+LENGTH('SAUMYA')                                                                
+----------------                                                                
+               6                                                                
+
+SQL> select concat ('saumya','sahu') from dual;
+
+CONCAT('SA                                                                      
+----------                                                                      
+saumyasahu                                                                      
+
+SQL> select lpad ('saumya',10) from dual;
+
+LPAD('SAUM                                                                      
+----------                                                                      
+    saumya                                                                      
+
+SQL> select lpad ('saumya',10,'*') from dual;
+
+LPAD('SAUM                                                                      
+----------                                                                      
+****saumya                                                                      
+
+SQL> select rpad ('saumya',10,'*') from dual;
+
+RPAD('SAUM                                                                      
+----------                                                                      
+saumya****                                                                      
+
+SQL> select ltrim ('saumya','S') from dual;
+
+LTRIM(                                                                          
+------                                                                          
+saumya                                                                          
+
+SQL> select ltrim ('saumya','s') from dual;
+
+LTRIM                                                                           
+-----                                                                           
+aumya                                                                           
+
+SQL> select rtrim ('saumya','a') from dual;
+
+RTRIM                                                                           
+-----                                                                           
+saumy                                                                           
+
+SQL> select trim ('a' from 'aaaaaumyaaa') from dual;
+
+TRI                                                                             
+---                                                                             
+umy                                                                             
+
+SQL> select translate ('saumya','oan',123) from dual;
+
+TRANSL                                                                          
+------                                                                          
+s2umy2                                                                          
+
+SQL> select translate ('saumya','uam',123) from dual;
+
+TRANSL                                                                          
+------                                                                          
+s213y2                                                                          
+
+SQL> select translate ('saumya','uam',12) from dual;
+
+TRANS                                                                           
+-----                                                                           
+s21y2                                                                           
+
+SQL> select replace ('saumya','uam',12) from dual;
+
+REPLAC                                                                          
+------                                                                          
+saumya                                                                          
+
+SQL> select replace ('saumya','aum',123) from dual;
+
+REPLAC                                                                          
+------                                                                          
+s123ya                                                                          
+
+SQL> select substr ('saumya sahu',1,15) from dual;
+
+SUBSTR('SAU                                                                     
+-----------                                                                     
+saumya sahu                                                                     
+
+SQL> select substr ('saumya sahu',2,7) from dual;
+
+SUBSTR(                                                                         
+-------                                                                         
+aumya s                                                                         
+
+SQL> select instr ('saumya sahu','a') from dual;
+
+INSTR('SAUMYASAHU','A')                                                         
+-----------------------                                                         
+                      2                                                         
+
+SQL> select instr ('saumya sahu','a',5) from dual;
+
+INSTR('SAUMYASAHU','A',5)                                                       
+-------------------------                                                       
+                        6                                                       
+
+SQL> select instr ('saumya sahu','a',5,2) from dual;
+
+INSTR('SAUMYASAHU','A',5,2)                                                     
+---------------------------                                                     
+                          9                                                     
+
+SQL> select reverse ('saumya sahu') from dual;
+
+REVERSE('SA                                                                     
+-----------                                                                     
+uhas aymuas                                                                     
+
+SQL> select abs (-2.34), abs(9.10) from dual;
+
+ABS(-2.34)  ABS(9.10)                                                           
+---------- ----------                                                           
+      2.34        9.1                                                           
+
+SQL> select ceil (-2.34), ceil (9.10) from dual;
+
+CEIL(-2.34) CEIL(9.10)                                                          
+----------- ----------                                                          
+         -2         10                                                          
+
+SQL> select floor (-2.34), floor (9.10) from dual;
+
+FLOOR(-2.34) FLOOR(9.10)                                                        
+------------ -----------                                                        
+          -3           9                                                        
+
+SQL> select power (2,3), power (-9,2) from dual;
+
+POWER(2,3) POWER(-9,2)                                                          
+---------- -----------                                                          
+         8          81                                                          
+
+SQL> select mod (3,2), mod (8,4) from dual;
+
+  MOD(3,2)   MOD(8,4)                                                           
+---------- ----------                                                           
+         1          0                                                           
+
+SQL> select sign (-3.2), sign (8) , sign( 0.00) from dual;
+
+SIGN(-3.2)    SIGN(8) SIGN(0.00)                                                
+---------- ---------- ----------                                                
+        -1          1          0                                                
+
+SQL> select log (3,2), log (8,1) from dual;
+
+  LOG(3,2)   LOG(8,1)                                                           
+---------- ----------                                                           
+.630929754          0                                                           
+
+SQL> select exp (3) from dual;
+
+    EXP(3)                                                                      
+----------                                                                      
+20.0855369                                                                      
+
+SQL> select trunc (402.534,2) from dual;
+
+TRUNC(402.534,2)                                                                
+----------------                                                                
+          402.53                                                                
+
+SQL> select trunc (402.534,1) from dual;
+
+TRUNC(402.534,1)                                                                
+----------------                                                                
+           402.5                                                                
+
+SQL> select round (402.534,2) from dual;
+
+ROUND(402.534,2)                                                                
+----------------                                                                
+          402.53                                                                
+
+SQL> select sin (60), cos(30), tan(90) from dual;
+
+   SIN(60)    COS(30)    TAN(90)                                                
+---------- ---------- ----------                                                
+-.30481062  .15425145 -1.9952004                                                
+
+SQL> select chr(70),ascii('A') from dual;
+
+C ASCII('A')                                                                    
+- ----------                                                                    
+F         65                                                                    
+
+SQL> select sysdate from dual;
+
+SYSDATE                                                                         
+---------                                                                       
+11-FEB-25                                                                       
+
+SQL> select current_date from dual;
+
+CURRENT_D                                                                       
+---------                                                                       
+11-FEB-25                                                                       
+
+SQL> select add_months(sysdate,3) from dual;
+
+ADD_MONTH                                                                       
+---------                                                                       
+11-MAY-25                                                                       
+
+SQL> select add_months(sysdate,-3) from dual;
+
+ADD_MONTH                                                                       
+---------                                                                       
+11-NOV-24                                                                       
+
+SQL> select last_day(sysdate) from dual;
+
+LAST_DAY(                                                                       
+---------                                                                       
+28-FEB-25                                                                       
+
+SQL> select next_day(sysdate,'saturday') from dual;
+
+NEXT_DAY(                                                                       
+---------                                                                       
+15-FEB-25                                                                       
+
+SQL> select months_between(sysdate,'15-FEB-2000') from dual;
+
+MONTHS_BETWEEN(SYSDATE,'15-FEB-2000')                                           
+-------------------------------------                                           
+                           299.891259                                           
+
+SQL> select to_number(1427) from dual;
+
+TO_NUMBER(1427)                                                                 
+---------------                                                                 
+           1427                                                                 
+
+SQL> select to_date('JANUARY 1,2000') from dual;
+select to_date('JANUARY 1,2000') from dual
+               *
+ERROR at line 1:
+ORA-01858: a non-numeric character was found where a numeric was expected 
+
+
+SQL> select to_date('JANUARY 1,2000','MONTH DD, YYYY' ) from dual;
+
+TO_DATE('                                                                       
+---------                                                                       
+01-JAN-00                                                                       
+
+SQL> select to_char(12345 , '$00,000') from dual;
+
+TO_CHAR(                                                                        
+--------                                                                        
+ $12,345                                                                        
+
+SQL> select to_char(sysdate,'dth-mon-yy') from dual;
+
+TO_CHAR(SYSDATE,'DT                                                             
+-------------------                                                             
+3rd-feb-25                                                                      
+
+SQL> select to_char(sysdate,'ddsp-mon-yy') from dual;
+
+TO_CHAR(SYSDATE,'DDSP-MON-YY                                                    
+----------------------------                                                    
+eleven-feb-25                                                                   
+
+SQL> select to_char(sysdate,'ddthsp-mon-yy') from dual;
+
+TO_CHAR(SYSDATE,'DDTHSP-MON-YY                                                  
+------------------------------                                                  
+eleventh-feb-25                                                                 
+
+SQL> select to_char(sysdate,'ddthsp-month-yy') from dual;
+
+TO_CHAR(SYSDATE,'DDTHSP-MONTH-YY')                                              
+------------------------------------------------------                          
+eleventh-february -25                                                           
+
+SQL> select nvl(null,'fallback') from dual;
+
+NVL(NULL                                                                        
+--------                                                                        
+fallback                                                                        
+
+SQL> select nvl2(null,'notnull','itisnull') from dual;
+
+NVL2(NUL                                                                        
+--------                                                                        
+itisnull                                                                        
+
+SQL> commit;
+
+Commit complete.
+
+SQL> spool off;

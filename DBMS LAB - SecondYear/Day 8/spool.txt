@@ -1,0 +1,331 @@
+SQL> connect shubham/1626;
+Connected.
+SQL> show user;
+USER is "SHUBHAM"
+SQL> select current_timestamp from dual;
+
+CURRENT_TIMESTAMP                                                               
+---------------------------------------------------------------------------     
+11-MAR-25 02.43.59.883000 PM +05:30                                             
+
+SQL>   CREATE TABLE DEPT
+  2     (DEPTNO NUMBER(2,0) PRIMARY KEY,
+  3  	DNAME VARCHAR2(14 BYTE),
+  4  	LOC VARCHAR2(13 BYTE)
+  5     ) ;
+
+Table created.
+
+SQL> Insert into DEPT (DEPTNO,DNAME,LOC) values (10,'ACCOUNTING','NEW YORK');
+
+1 row created.
+
+SQL> Insert into DEPT (DEPTNO,DNAME,LOC) values (20,'RESEARCH','DALLAS');
+
+1 row created.
+
+SQL> Insert into DEPT (DEPTNO,DNAME,LOC) values (30,'SALES','CHICAGO');
+
+1 row created.
+
+SQL> Insert into DEPT (DEPTNO,DNAME,LOC) values (40,'OPERATIONS','BOSTON');
+
+1 row created.
+
+SQL> Insert into DEPT (DEPTNO,DNAME,LOC) values (50,'IT','HYDERABAD');
+
+1 row created.
+
+
+SQL> select * from dept;
+
+    DEPTNO DNAME          LOC
+---------- -------------- -------------
+        10 ACCOUNTING     NEW YORK
+        20 RESEARCH       DALLAS
+        30 SALES          CHICAGO
+        40 OPERATIONS     BOSTON
+        50 IT             HYDERABAD                                             
+
+SQL> 
+SQL>  CREATE TABLE EMP2
+  2     (
+  3      EMPNO NUMBER(4,0) PRIMARY KEY,
+  4  	ENAME VARCHAR2(10 BYTE),
+  5  	JOB VARCHAR2(9 BYTE),
+  6  	MGR NUMBER(4,0),
+  7  	HIREDATE DATE,
+  8  	SAL NUMBER(7,2),
+  9  	DEPTNO NUMBER(2,0) REFERENCES DEPT(DEPTNO)
+ 10     ) ;
+
+Table created.
+
+SQL> 
+SQL> Insert into EMP2 (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,DEPTNO) values (7839,'KING','PRESIDENT',null,to_date('17-11-81','DD-MM-RR'),5000,10);
+
+1 row created.
+
+SQL> Insert into EMP2 (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,DEPTNO) values (7698,'BLAKE','MANAGER',7839,to_date('01-05-81','DD-MM-RR'),2850,30);
+
+1 row created.
+
+SQL> Insert into EMP2 (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,DEPTNO) values (7782,'CLARK','MANAGER',7839,to_date('09-06-81','DD-MM-RR'),2450,10);
+
+1 row created.
+
+SQL> Insert into EMP2 (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,DEPTNO) values (7566,'JONES','MANAGER',7839,to_date('02-04-81','DD-MM-RR'),2975,20);
+
+1 row created.
+
+SQL> Insert into EMP2 (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,DEPTNO) values (7788,'SCOTT','ANALYST',7566,to_date('19-04-87','DD-MM-RR'),3000,20);
+
+1 row created.
+
+SQL> Insert into EMP2 (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,DEPTNO) values (7902,'FORD','ANALYST',7566,to_date('03-12-81','DD-MM-RR'),3000,20);
+
+1 row created.
+
+SQL> Insert into EMP2 (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,DEPTNO) values (7369,'SMITH','CLERK',7902,to_date('17-12-80','DD-MM-RR'),50,20);
+
+1 row created.
+
+SQL> Insert into EMP2 (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,DEPTNO) values (7499,'ALLEN','SALESMAN',7698,to_date('20-02-81','DD-MM-RR'),1600,30);
+
+1 row created.
+
+SQL> Insert into EMP2 (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,DEPTNO) values (7521,'WARD','SALESMAN',7698,to_date('22-02-81','DD-MM-RR'),1250,30);
+
+1 row created.
+
+SQL> Insert into EMP2 (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,DEPTNO) values (7654,'MARTIN','SALESMAN',7698,to_date('28-09-81','DD-MM-RR'),1250,30);
+
+1 row created.
+
+SQL> Insert into EMP2 (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,DEPTNO) values (7844,'TURNER','SALESMAN',7698,to_date('08-09-81','DD-MM-RR'),1500,30);
+
+1 row created.
+
+SQL> Insert into EMP2 (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,DEPTNO) values (7876,'ADAMS','CLERK',7788,to_date('23-05-87','DD-MM-RR'),1100,20);
+
+1 row created.
+
+SQL> Insert into EMP2 (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,DEPTNO) values (7900,'JAMES','CLERK',7698,to_date('03-12-81','DD-MM-RR'),8005,30);
+
+1 row created.
+
+SQL> Insert into EMP2 (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,DEPTNO) values (7934,'MILLER','CLERK',7782,to_date('23-01-82','DD-MM-RR'),1300,40);
+
+1 row created.
+
+SQL> Insert into EMP2 (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,DEPTNO) values (8001,'ANABELLE','CLERK',7698,to_date('03-12-81','DD-MM-RR'),5500,20);
+
+1 row created.
+
+SQL> Insert into EMP2 (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,DEPTNO) values (8002,'OLIVE','CLERK',7698,to_date('03-12-81','DD-MM-RR'),5800,20);
+
+1 row created.
+
+SQL> Insert into EMP2 (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,DEPTNO) values (8003,'OLIVE','CLERK',7698,to_date('03-12-81','DD-MM-RR'),5800,20);
+
+1 row created.
+
+SQL> Insert into EMP2 (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,DEPTNO) values (8004,'KINGS','CLERK',7698,to_date('03-12-81','DD-MM-RR'),5800,20);
+
+1 row created.
+
+SQL> Insert into EMP2 (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,DEPTNO) values (8005,'KINE','CLERK',7698,to_date('03-12-81','DD-MM-RR'),5800,20);
+
+1 row created.
+
+SQL> Insert into EMP2 (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,DEPTNO) values (8006,'KILLEY','SALESMAN',7788,to_date('12-06-90','DD-MM-RR'),7500,null);
+
+1 row created.
+
+SQL> Insert into EMP2 (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,DEPTNO) values (8007,'Jason','developer',7788,to_date('12-06-90','DD-MM-RR'),7500,null);
+
+1 row created.
+
+SQL> Insert into EMP2 (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,DEPTNO) values (8008,'BIPLAB  ','CLERK',7788,to_date('12-07-89','DD-MM-RR'),8999,20);
+
+1 row created.
+
+SQL> Insert into EMP2 (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,DEPTNO) values (8009,'BIPLAB','SALESMAN',7698,to_date('12-03-22','DD-MM-RR'),9000,30);
+
+1 row created.
+
+SQL> Insert into EMP2 (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,DEPTNO) values (8010,'Jason','SALESMAN',7698,to_date('12-03-22','DD-MM-RR'),9000,30);
+
+1 row created.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> set pagesize 50;
+SQL> set linesize 100;
+SQL> select * from EMP2;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL     DEPTNO                          
+---------- ---------- --------- ---------- --------- ---------- ----------                          
+      7839 KING       PRESIDENT            17-NOV-81       5000         10                          
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850         30                          
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450         10                          
+      7566 JONES      MANAGER         7839 02-APR-81       2975         20                          
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000         20                          
+      7902 FORD       ANALYST         7566 03-DEC-81       3000         20                          
+      7369 SMITH      CLERK           7902 17-DEC-80         50         20                          
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600         30                          
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250         30                          
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250         30                          
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500         30                          
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100         20                          
+      7900 JAMES      CLERK           7698 03-DEC-81       8005         30                          
+      7934 MILLER     CLERK           7782 23-JAN-82       1300         40                          
+      8001 ANABELLE   CLERK           7698 03-DEC-81       5500         20                          
+      8002 OLIVE      CLERK           7698 03-DEC-81       5800         20                          
+      8003 OLIVE      CLERK           7698 03-DEC-81       5800         20                          
+      8004 KINGS      CLERK           7698 03-DEC-81       5800         20                          
+      8005 KINE       CLERK           7698 03-DEC-81       5800         20                          
+      8006 KILLEY     SALESMAN        7788 12-JUN-90       7500                                     
+      8007 Jason      developer       7788 12-JUN-90       7500                                     
+      8008 BIPLAB     CLERK           7788 12-JUL-89       8999         20                          
+      8009 BIPLAB     SALESMAN        7698 12-MAR-22       9000         30                          
+      8010 Jason      SALESMAN        7698 12-MAR-22       9000         30                          
+
+24 rows selected.
+
+SQL> --Question 1
+
+SQL> select empno,ename,sal from EMP2 where sal > (select sal from EMP2 where empno=7839);
+
+     EMPNO ENAME             SAL                                                                    
+---------- ---------- ----------                                                                    
+      7900 JAMES            8005                                                                    
+      8001 ANABELLE         5500                                                                    
+      8002 OLIVE            5800                                                                    
+      8003 OLIVE            5800                                                                    
+      8004 KINGS            5800                                                                    
+      8005 KINE             5800                                                                    
+      8006 KILLEY           7500                                                                    
+      8007 Jason            7500                                                                    
+      8008 BIPLAB           8999                                                                    
+      8009 BIPLAB           9000                                                                    
+      8010 Jason            9000                                                                    
+
+11 rows selected.
+
+SQL> --Question 2
+
+SQL> select empno,ename,(select sal from EMP2 where empno=7839) from EMP2 where sal > (select sal from EMP2 where empno=7839);
+
+     EMPNO ENAME      (SELECTSALFROMEMP2WHEREEMPNO=7839)                                            
+---------- ---------- ----------------------------------                                            
+      7900 JAMES                                    5000                                            
+      8001 ANABELLE                                 5000                                            
+      8002 OLIVE                                    5000                                            
+      8003 OLIVE                                    5000                                            
+      8004 KINGS                                    5000                                            
+      8005 KINE                                     5000                                            
+      8006 KILLEY                                   5000                                            
+      8007 Jason                                    5000                                            
+      8008 BIPLAB                                   5000                                            
+      8009 BIPLAB                                   5000                                            
+      8010 Jason                                    5000                                            
+
+11 rows selected.
+
+SQL> --Question 3
+
+SQL> select * from EMP2 where deptno=(select deptno from EMP2 where empno=7839);
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL     DEPTNO                          
+---------- ---------- --------- ---------- --------- ---------- ----------                          
+      7839 KING       PRESIDENT            17-NOV-81       5000         10                          
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450         10                          
+
+SQL> --Question 4
+
+SQL> select ename,sal,(select avg(sal) from EMP2) from EMP2 where sal > (select avg(sal) from EMP2);
+
+ENAME             SAL (SELECTAVG(SAL)FROMEMP2)                                                      
+---------- ---------- ------------------------                                                      
+KING             5000                 4417.875                                                      
+JAMES            8005                 4417.875                                                      
+ANABELLE         5500                 4417.875                                                      
+OLIVE            5800                 4417.875                                                      
+OLIVE            5800                 4417.875                                                      
+KINGS            5800                 4417.875                                                      
+KINE             5800                 4417.875                                                      
+KILLEY           7500                 4417.875                                                      
+Jason            7500                 4417.875                                                      
+BIPLAB           8999                 4417.875                                                      
+BIPLAB           9000                 4417.875                                                      
+Jason            9000                 4417.875                                                      
+
+12 rows selected.
+
+SQL> --Question 5
+SQL> select * from EMP2 where hiredate < (select hiredate from EMP2 where ename='BLAKE');
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL     DEPTNO                          
+---------- ---------- --------- ---------- --------- ---------- ----------                          
+      7566 JONES      MANAGER         7839 02-APR-81       2975         20                          
+      7369 SMITH      CLERK           7902 17-DEC-80         50         20                          
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600         30                          
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250         30                          
+
+SQL> --Question 6
+
+SQL> select ename,sal from EMP2 where sal>(select sal from EMP2 where ename='BLAKE') and sal<(select sal from EMP2 where ename='KING');
+
+ENAME             SAL                                                                               
+---------- ----------                                                                               
+JONES            2975                                                                               
+SCOTT            3000                                                                               
+FORD             3000                                                                               
+
+SQL> --Question 7
+
+SQL> select deptno from EMP2 group by deptno having count(*)>(select count(*) from EMP2 where deptno=10);
+
+    DEPTNO                                                                      
+----------                                                                      
+        30                                                                      
+        20                                                                      
+
+SQL> --Question 8
+
+SQL> select dname from DEPT natural join (select deptno from EMP2 group by deptno having count(*)>(select count(*) from EMP2 where deptno=10));
+
+DNAME                                                                           
+--------------                                                                  
+SALES                                                                           
+RESEARCH                                                                        
+
+SQL> --Question 9
+SQL> select dname from DEPT natural join (select deptno from EMP2 group by deptno having count(*)>(select count(*) from EMP2 where deptno=(select deptno from DEPT where dname='ACCOUNTING')));
+
+DNAME                                                                           
+--------------                                                                  
+SALES                                                                           
+RESEARCH                                                                        
+
+SQL> --Question 10
+SQL> select max(sal) from EMP2 where sal<(select max(sal) from EMP2 where sal<(select max(sal) from EMP2));
+
+  MAX(SAL)                                                                      
+----------                                                                      
+      8005                                                                      
+
+SQL> commit;
+
+Commit complete.
+
+SQL> select current_timestamp from dual;
+
+CURRENT_TIMESTAMP                                                               
+---------------------------------------------------------------------------     
+11-MAR-25 03.54.46.664000 PM +05:30                                             
+
+SQL> spool off;

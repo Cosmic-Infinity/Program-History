@@ -1,0 +1,38 @@
+Constraints are of mainly 3 types
+	|- Domain Integrity
+		|- Default Constraint: single column, one time only, column level only
+		|- Not Null Constraint: multiple column, column level only
+		|- Check Constraint: multiple column, column + table level
+	|- Entity Integrity
+		|- Unique Key Constraint (can accept NULL): column + table level 
+		|- Primary Key Constraint (does NOT accept NULL): column + table level
+	|- Referential Integrity Constraint
+		|- Foreign Key Constraint: column + table level
+
+We can apply constraint during creation or alteration of table
+	|- Column level: in-line constraint
+	|- Table level: out-of-line constraint
+
+
+> create table <tablename> (id number(5) primary key) [makes id as primary key] [this format is column level]
+> create table <tablename> ((id number(5), name varchar(10), primary key(id), unique(name)) [puts primary key constraint on id and unique constraint on name] [this format is table level]
+
+> create table stud (id number(5), name varchar(5), salary number(8) default 10000) [puts default value 10k on salary]
+> create table stud (id number(5) not null) [puts not null constraint on id]
+> create table stud (id number(5), name varchar(5) check name in('ram', 'mohan')) [checks to allow only ram and mohan entry in name]
+> create table stud (id number(5) reference Dept(Dep_id))
+> create table stud (id number(5) constraint pk primary key)
+
+
+
+table level samples
+	|- > create table stud (id number(5), name varchar(5), unique(name));
+	|- > create table stud (id number(5), name varchar(5), check(id in(1,2)));
+	|- > create table stud (id number(5), name varchar(5), primary key(id));
+	|- > create table stud (id number(5), name varchar(5), foreign key(id) references Dept(d_id));
+	Altering Table
+		|- add constarint > alter table stud add constraint c1 primary key(id);
+		|- drop constarint > alter table stud drop constraint c1;
+
+
+

@@ -1,0 +1,41 @@
+SQL
+
+Data definition Language (DDL)
+	|- create : create table table_name(col_name data_type(size),...);
+	|- alter [noting, address is the column name]
+	     |- add column	: alter table <table_name> add (address varchar(20));
+	     |- modify column	: alter table <table_name> modify (address varchar(30));
+	     |- drop column	: alter table <table_name> drop (column_name);
+	     |- rename column	: alter table <table_name> rename column <old_name> to <new_name>;
+	|- rename
+	|- drop
+	|- truncate
+
+NOTE: drop 'column' term is optional in alter. but suggested to write column when dropping column so as to prevent confusion if table name is also similar to column name.
+
+
+Data Manipulation Language(DML)
+	|- insert : insert into <table_name> values(data, 'data',...);
+	|- update : update <table_name> set column=<value> where (<condition>);
+	|- delete : delete from <table_name> (where <condition>);
+
+
+Data Query
+	|- select : select <column_name>,<column_name>,... from <tabel_name>;
+		  : select <column_name> ||' '|| <column_name> from std_table;
+		  : select <column_name>||' '||<column_name> as "<alias>" from std_table;
+		  : select * from <tabel_name> where condition AND condition OR condition...; [condition may be cgpa=9.0, cgpa>8.5, etc. NOTE: and, or,... but not &&, ||,...]
+		  : select * from <tabel_name> where NOT(conditions...)
+		  : select DISTINCT <column_name> from <tabel_name>; [select non-duplicate entries]
+	|- 
+	|- 
+	|- 
+	|- 
+	|- 
+	|- 
+	|-   
+	|- 
+
+
+
+

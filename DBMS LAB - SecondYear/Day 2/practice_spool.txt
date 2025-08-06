@@ -1,0 +1,161 @@
+SQL> connect shubham/1626
+Connected.
+SQL> show user
+USER is "SHUBHAM"
+SQL> create table std_table(id number(10), name varchar(10), address varchar(10));
+
+Table created.
+
+SQL> desc std_table
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ID                                                 NUMBER(10)
+ NAME                                               VARCHAR2(10)
+ ADDRESS                                            VARCHAR2(10)
+
+
+SQL> alter table std_table add(cgpa number(4,2));
+
+Table altered.
+
+
+SQL> alter table std_table modify(id number(10));
+
+Table altered.
+
+SQL> desc std_table
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ID                                                 NUMBER(10)
+ NAME                                               VARCHAR2(10)
+ ADDRESS                                            VARCHAR2(10)
+ CGPA                                               NUMBER(4,2)
+
+SQL> alter table std_table drop(address);
+
+Table altered.
+
+SQL> desc std_table
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ID                                                 NUMBER(10)
+ NAME                                               VARCHAR2(10)
+ CGPA                                               NUMBER(4,2)
+
+SQL> alter table std_table modify(id number(5));
+
+Table altered.
+
+SQL> desc std_table
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ID                                                 NUMBER(5)
+ NAME                                               VARCHAR2(10)
+ CGPA                                               NUMBER(4,2)
+
+SQL> alter table std_table modify(id number(10));
+
+Table altered.
+
+SQL> insert into std_table values(11111, 'RAMAN', 9.02);
+
+1 row created.
+
+SQL> insert into std_table values(22222, 'MOHAN', 8.52);
+
+1 row created.
+
+SQL> insert into std_table values(33333, 'VIKAS', 7.77);
+
+1 row created.
+
+SQL> insert into std_table values(44444, 'SHARAN', 8.5);
+
+1 row created.
+
+SQL> select * from std_table;
+
+        ID NAME             CGPA                                                
+---------- ---------- ----------                                                
+     11111 RAMAN            9.02                                                
+     22222 MOHAN            8.52                                                
+     33333 VIKAS            7.77                                                
+     44444 SHARAN            8.5                                                
+
+
+SQL> select * from std_table;
+
+        ID NAME             CGPA                                                
+---------- ---------- ----------                                                
+       101 RAMAN            9.02                                                
+       101 MOHAN            8.52                                                
+       101 VIKAS            7.77                                                
+       101 SHARAN            8.5                                                
+
+SQL> update std_table set id=100 where name='RAMAN';
+
+1 row updated.
+
+SQL> select * from std_table;
+
+        ID NAME             CGPA                                                
+---------- ---------- ----------                                                
+       100 RAMAN            9.02                                                
+       101 MOHAN            8.52                                                
+       101 VIKAS            7.77                                                
+       101 SHARAN            8.5                                                
+
+SQL> delete from std_table where name='RAMAN';
+
+1 row deleted.
+
+SQL> select * from std_table;
+
+        ID NAME             CGPA                                                
+---------- ---------- ----------                                                
+       101 MOHAN            8.52                                                
+       101 VIKAS            7.77                                                
+       101 SHARAN            8.5                                                
+
+SQL> select id,name from std_table;
+
+        ID NAME                                                                 
+---------- ----------                                                           
+       101 MOHAN                                                                
+       101 VIKAS                                                                
+       101 SHARAN                                                               
+
+SQL> select id ||' '|| name from std_table;
+
+ID||''||NAME                                                                    
+---------------------------------------------------                             
+101 MOHAN                                                                       
+101 VIKAS                                                                       
+101 SHARAN                                                                      
+
+SQL> select id||' '||name as "information" from std_table;
+
+information                                                                     
+---------------------------------------------------                             
+101 MOHAN                                                                       
+101 VIKAS                                                                       
+101 SHARAN                                                                      
+
+SQL> select * from std_table where cgpa>8.0;
+
+        ID NAME             CGPA                                                
+---------- ---------- ----------                                                
+       101 MOHAN            8.52                                                
+       101 SHARAN            8.5                                                
+
+SQL> select distinct id from std_table;
+
+        ID                                                                      
+----------                                                                      
+       101                                                                      
+
+SQL> commit;
+
+Commit complete.
+
+SQL> spool off;

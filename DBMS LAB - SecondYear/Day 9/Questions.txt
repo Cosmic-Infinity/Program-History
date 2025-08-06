@@ -1,0 +1,134 @@
+Part 1: Basic PL/SQL Programs (User Input Based)
+Q1. Write a PL/SQL program to accept two numbers from the user and display their sum.
+
+declare
+a number;
+b number;
+c number;
+begin
+a:= &a;
+b:= &b;
+c:= a+b;
+dbms_output.put_line('Sum of a and b is '||c);
+end;
+/
+
+
+Q2. Write a PL/SQL program to accept a number from the user and find the sum of numbers from 1 to that number using a loop.
+
+declare
+a number;
+b number;
+begin
+a:=&a;
+b:=0;
+FOR i IN 1..a LOOP
+    b:=b+a;
+END LOOP;
+DBMS_OUTPUT.PUT_LINE('Sum upto '||a||'i '||b);
+end;
+/
+
+
+
+Q3. Write a PL/SQL program to accept a number from the user and check whether it is even or odd using an IF-ELSE condition.
+
+declare
+a number;
+begin
+a:= &a;
+if mod(a,2)=0 then
+	dbms_output.put_line(a||' is even');
+else
+	dbms_output.put_line(a||' is odd');
+end if;
+end;
+/
+
+
+Q4. Write a PL/SQL program to accept a number from the user and find its factorial using a FOR LOOP.
+
+declare
+a number;
+b number;
+begin
+a:=&a;
+b:=1;
+dbms_output.put_line('Factoril :');
+FOR i IN 1..a LOOP
+    b:= b*i;
+END LOOP;
+dbms_output.put_line(b);
+end;
+/
+
+
+Q5. Write a PL/SQL program to accept a number from the user and print the first N Fibonacci numbers using a WHILE LOOP.
+
+--first n fibonacci number
+declare
+fn number;
+sn number;
+ad number;
+n number;
+c number;
+begin
+fn:=0;
+sn:=1;
+n:=&n;
+c:=0;
+dbms_output.put_line('Fibonacci :');
+while c<n loop
+	dbms_output.put_line(fn);
+	ad:=fn+sn;
+	fn:=sn;
+	sn:=ad;
+	c:= c+1;
+end loop;
+end;
+/
+
+
+Q6. Write a PL/SQL program to find the largest number among three numbers entered by the user using IF-ELSE conditions.
+
+declare
+a number;
+b number;
+c number;
+begin
+a:= &a;
+b:= &b;
+c:= &c;
+if (a>b) then
+	if (a>c) then
+		dbms_output.put_line('Largest is '||a);
+	else
+		dbms_output.put_line('Largest is '||c);
+	end if;
+else
+	if (b>c) then
+		dbms_output.put_line('Largest is '||b);
+	else
+		dbms_output.put_line('Largest is '||c);
+	end if;
+end if;
+end;
+/
+
+
+Q7. Write a PL/SQL program to reverse a number entered by the user using a loop.
+
+declare
+n integer;
+rev integer;
+begin
+n:=&n;
+rev:=0;
+while n>0 loop
+	rev := (rev*10) + mod(n,10);
+	n := trunc(n / 10);
+end loop;
+dbms_output.put_line('Reversed number : '||rev);
+end;
+/
+

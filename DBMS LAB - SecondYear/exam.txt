@@ -1,0 +1,183 @@
+SQL> connect shubham/1626;
+Connected.
+SQL> select current_timestamp from dual;
+
+CURRENT_TIMESTAMP                                                               
+---------------------------------------------------------------------------     
+05-APR-25 10.00.21.348000 AM +05:30                                             
+
+SQL> create table EMP3(empno number(1), deptno number(2), ename varchar(10), salary number(10), designation varchar(10), join_date date, dob date, dept_location varchar(10));
+
+Table created.
+
+SQL> desc EMP3;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                              NUMBER(1)
+ DEPTNO                                             NUMBER(2)
+ ENAME                                              VARCHAR2(10)
+ SALARY                                             NUMBER(10)
+ DESIGNATION                                        VARCHAR2(10)
+ JOIN_DATE                                          DATE
+ DOB                                                DATE
+ DEPT_LOCATION                                      VARCHAR2(10)
+
+SQL> set pagesize 10;
+SQL> set linesize 150;
+SQL> insert into EMP3 values(&empno, &deptno, '&ename', &salary, '&designation', '&join_date', '&dob', '&dept_location');
+Enter value for empno: 1
+Enter value for deptno: 10
+Enter value for ename: John
+Enter value for salary: 100000
+Enter value for designation: Manager
+Enter value for join_date: 18-FEB-25
+Enter value for dob: 11-JAN-02
+Enter value for dept_location: Mumbai
+old   1: insert into EMP3 values(&empno, &deptno, '&ename', &salary, '&designation', '&join_date', '&dob', '&dept_location')
+new   1: insert into EMP3 values(1, 10, 'John', 100000, 'Manager', '18-FEB-25', '11-JAN-02', 'Mumbai')
+
+1 row created.
+
+SQL> /
+Enter value for empno: 2
+Enter value for deptno: 20
+Enter value for ename: Marlo
+Enter value for salary: 80000
+Enter value for designation: Engineer
+Enter value for join_date: 1-JUN-15
+Enter value for dob: 3-OCT-05
+Enter value for dept_location: Kolkata
+old   1: insert into EMP3 values(&empno, &deptno, '&ename', &salary, '&designation', '&join_date', '&dob', '&dept_location')
+new   1: insert into EMP3 values(2, 20, 'Marlo', 80000, 'Engineer', '1-JUN-15', '3-OCT-05', 'Kolkata')
+
+1 row created.
+
+SQL> /
+Enter value for empno: 3
+Enter value for deptno: 20
+Enter value for ename: Riya
+Enter value for salary: 95000
+Enter value for designation: Engineer
+Enter value for join_date: 22-DEC-18
+Enter value for dob: 21-FEB-01
+Enter value for dept_location: Chennai
+old   1: insert into EMP3 values(&empno, &deptno, '&ename', &salary, '&designation', '&join_date', '&dob', '&dept_location')
+new   1: insert into EMP3 values(3, 20, 'Riya', 95000, 'Engineer', '22-DEC-18', '21-FEB-01', 'Chennai')
+
+1 row created.
+
+SQL> /
+Enter value for empno: 4
+Enter value for deptno: 30
+Enter value for ename: Praggya
+Enter value for salary: 75000
+Enter value for designation: Analyst
+Enter value for join_date: 17-SEP-19
+Enter value for dob: 26-DEC-01
+Enter value for dept_location: Mumbai
+old   1: insert into EMP3 values(&empno, &deptno, '&ename', &salary, '&designation', '&join_date', '&dob', '&dept_location')
+new   1: insert into EMP3 values(4, 30, 'Praggya', 75000, 'Analyst', '17-SEP-19', '26-DEC-01', 'Mumbai')
+
+1 row created.
+
+SQL> /
+Enter value for empno: 5
+Enter value for deptno: 20
+Enter value for ename: Amar
+Enter value for salary: 75000
+Enter value for designation: Salesman
+Enter value for join_date: 27-FEB-12
+Enter value for dob: 22-MAR-03
+Enter value for dept_location: Kota
+old   1: insert into EMP3 values(&empno, &deptno, '&ename', &salary, '&designation', '&join_date', '&dob', '&dept_location')
+new   1: insert into EMP3 values(5, 20, 'Amar', 75000, 'Salesman', '27-FEB-12', '22-MAR-03', 'Kota')
+
+1 row created.
+
+SQL> select * from EMP3;
+
+     EMPNO     DEPTNO ENAME          SALARY DESIGNATIO JOIN_DATE DOB       DEPT_LOCAT                                                                 
+---------- ---------- ---------- ---------- ---------- --------- --------- ----------                                                                 
+         1         10 John           100000 Manager    18-FEB-25 11-JAN-02 Mumbai                                                                     
+         2         20 Marlo           80000 Engineer   01-JUN-15 03-OCT-05 Kolkata                                                                    
+         3         20 Riya            95000 Engineer   22-DEC-18 21-FEB-01 Chennai                                                                    
+         4         30 Praggya         75000 Analyst    17-SEP-19 26-DEC-01 Mumbai                                                                     
+         5         20 Amar            75000 Salesman   27-FEB-12 22-MAR-03 Kota                                                                       
+
+SQL> --Question 1
+
+SQL> select ename,empno from EMP3 order by salary desc;
+
+ENAME           EMPNO                                                                                                                                 
+---------- ----------                                                                                                                                 
+John                1                                                                                                                                 
+Riya                3                                                                                                                                 
+Marlo               2                                                                                                                                 
+Amar                5                                                                                                                                 
+Praggya             4                                                                                                                                 
+
+SQL> --Question 2
+
+SQL> select ename,empno from EMP3 where designation='Manager';
+
+ENAME           EMPNO                                                                                                                                 
+---------- ----------                                                                                                                                 
+John                1                                                                                                                                 
+
+SQL> --Qustion 3
+SQL> select floor(months_between(sysdate, dob) / 12),ename from EMP3;
+
+FLOOR(MONTHS_BETWEEN(SYSDATE,DOB)/12) ENAME                                                                                                           
+------------------------------------- ----------                                                                                                      
+                                   23 John                                                                                                            
+                                   19 Marlo                                                                                                           
+                                   24 Riya                                                                                                            
+                                   23 Praggya                                                                                                         
+                                   22 Amar                                                                                                            
+
+SQL> --Question 4
+
+SQL> select sum(salary) from EMP3;
+
+SUM(SALARY)                                                                                                                                           
+-----------                                                                                                                                           
+     425000                                                                                                                                           
+
+SQL> --Question 5;
+
+SQL> insert into EMP3 values (6, 20, 'Richard', 80000, 'Salesman', '17-MAR-21', '1-APR-03', 'Mumbai');
+
+1 row created.
+
+SQL> select * from EMP3;
+
+     EMPNO     DEPTNO ENAME          SALARY DESIGNATIO JOIN_DATE DOB       DEPT_LOCAT                                                                 
+---------- ---------- ---------- ---------- ---------- --------- --------- ----------                                                                 
+         1         10 John           100000 Manager    18-FEB-25 11-JAN-02 Mumbai                                                                     
+         2         20 Marlo           80000 Engineer   01-JUN-15 03-OCT-05 Kolkata                                                                    
+         3         20 Riya            95000 Engineer   22-DEC-18 21-FEB-01 Chennai                                                                    
+         4         30 Praggya         75000 Analyst    17-SEP-19 26-DEC-01 Mumbai                                                                     
+         5         20 Amar            75000 Salesman   27-FEB-12 22-MAR-03 Kota                                                                       
+         6         20 Richard         80000 Salesman   17-MAR-21 01-APR-03 Mumbai                                                                     
+
+6 rows selected.
+
+SQL> select ename from EMP3 where deptno=20 and dept_location='Mumbai';
+
+ENAME                                                                                                                                                 
+----------                                                                                                                                            
+Richard                                                                                                                                               
+
+SQL> commit;
+
+Commit complete.
+
+SQL> select current_timestamp from dual;
+
+CURRENT_TIMESTAMP                                                                                                                                     
+---------------------------------------------------------------------------                                                                           
+05-APR-25 10.21.00.663000 AM +05:30                                                                                                                   
+
+SQL> show user;
+USER is "SHUBHAM"
+SQL> spool off;

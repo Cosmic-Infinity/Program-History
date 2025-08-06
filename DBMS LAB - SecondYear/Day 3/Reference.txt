@@ -1,0 +1,65 @@
+Operators in SQL may be 
+
+1. Unary
+
+2. Binary
+	|- Arithmetic (+ - * / !)
+	|- Logical (not, and, or) [to be used with 'where']
+	|- Relational (<, >, <=, >=, =, distnct, any, in, not in, like, not like, between, null)
+
+3. Set [requires the order of the tables to be same]
+	|- union (union between two tables. doesn't have duplicates)
+	|- union all (union between two tables. has duplicates)
+	|- intersect (intersection between two tables)
+	|- minus (set difference)
+
+like can use
+% = zero or more
+_ = only one
+
+
+> update emp set salary=salary+2000 where id=1; [any arithetic in place of +]
+
+> select id,salary+2000 from emp; [view with 2000 added to salary]
+
+> select salary+2000 as "promotion";
+
+> select ++salary from emp;
+
+> select * from emp where name!='ram';
+
+> select * from emp where id>any(1,2); [where id is greater than 1 and 2]
+
+> select * from emp where id>in(1,2); [where id is 1 or 2]
+
+> select * from emp where id>not in(1,2); [where id is \not 1 and 2]
+
+> select * from emp where name like='R%'; [where name starts with R and has any number of characters after that]
+> select * from emp where name like='__h__'; [where name starts any two characters, then has h in 3rd position,then has 2 more characters after that]
+
+> select * from emp where name not like='R%'; [where name does not (starts with R and has any number of characters after that)]
+> select * from emp where name not like='__h__'; [where name does not (starts any two characters, then has h in 3rd position, then has 2 more characters after that)]
+
+> select * from emp where id between 1 and 2; [where id is between 1 and 2]
+
+> select * from emp where id is null; [where id is null]
+
+
+
+
+
+Sorting in SQL
+	|- order by: age order by ascending, id descending, salary ascending... [multiple sorting in one command]
+
+
+other operations
+	|- count
+	|- sum
+	|- average
+	|- max
+	|- min
+	|- std()
+	|- variance()
+
+> select count(*) from emp [will give count including null]
+> select sum(salary) from emp

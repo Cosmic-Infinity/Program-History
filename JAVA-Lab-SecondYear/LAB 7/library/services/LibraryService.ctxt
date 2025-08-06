@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=LibraryService
+comment1.params=book
+comment1.target=void\ addBook(library.models.Book)
+comment2.params=bookId
+comment2.target=void\ removeBook(java.lang.String)
+comment3.params=userId\ bookId
+comment3.target=void\ borrowBook(java.lang.String,\ java.lang.String)
+comment4.params=userId\ bookId
+comment4.target=void\ returnBook(java.lang.String,\ java.lang.String)
+numComments=5

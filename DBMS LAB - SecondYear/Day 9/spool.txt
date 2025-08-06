@@ -1,0 +1,1121 @@
+SQL> connect shubham/1626;
+Connected.
+SQL> show user;
+USER is "SHUBHAM"
+SQL> select current_timestamp from dual;
+
+CURRENT_TIMESTAMP                                                               
+---------------------------------------------------------------------------     
+18-MAR-25 02.33.27.433000 PM +05:30                                             
+
+SQL> declare
+  2  declare a number[2];
+  3  b number[2] := 3;
+  4  a:= 2;
+  5  c number[2];
+  6  ed
+  7  /
+declare a number[2];
+*
+ERROR at line 2:
+ORA-06550: line 2, column 1: 
+PLS-00103: Encountered the symbol "DECLARE" when expecting one of the 
+following: 
+begin function pragma procedure subtype type <an identifier> 
+<a double-quoted delimited-identifier> current cursor delete 
+exists prior 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  declare
+  2  a number[2] := 2;
+  3  b number[2] := 3;
+  4  c number[2];
+  5  begin
+  6  c:= a+b;
+  7  dbms_output.put_line('Sum of a and b is'||c);
+  8* end;
+SQL> /
+a number[2] := 2;
+        *
+ERROR at line 2:
+ORA-06550: line 2, column 9: 
+PLS-00103: Encountered the symbol "[" when expecting one of the following: 
+:= . ( @ % ; not null range default character 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  declare
+  2  a number := 2;
+  3  b number := 3;
+  4  c number;
+  5  begin
+  6  c:= a+b;
+  7  dbms_output.put_line('Sum of a and b is'||c);
+  8* end;
+SQL> /
+
+PL/SQL procedure successfully completed.
+
+SQL> set serveroutput on;
+SQL> /
+Sum of a and b is5                                                              
+
+PL/SQL procedure successfully completed.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  declare
+  2  a number;
+  3  b number;
+  4  c number;
+  5  begin
+  6  a:= &a;
+  7  b:= &b;
+  8  c:= a+b;
+  9  dbms_output.put_line('Sum of a and b is'||c);
+ 10* end;
+SQL> ed
+Wrote file afiedt.buf
+
+  1  declare
+  2  a number;
+  3  b number;
+  4  c number;
+  5  begin
+  6  a:= &a;
+  7  b:= &b;
+  8  c:= a+b;
+  9  dbms_output.put_line('Sum of a and b is'||c);
+ 10* end;
+SQL> /
+Enter value for a: 5
+old   6: a:= &a;
+new   6: a:= 5;
+Enter value for b: 10
+old   7: b:= &b;
+new   7: b:= 10;
+Sum of a and b is15                                                             
+
+PL/SQL procedure successfully completed.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  declare
+  2  a number;
+  3  b number;
+  4  c number;
+  5  begin
+  6  a:= &a;
+  7  b:= &b;
+  8  c:= &c;
+  9  if (a>b) then
+ 10  	if (a>c) then
+ 11  		dbms_output.put_line('Largest is '||a);
+ 12  	else
+ 13  		dbms_output.put_line('Largest is '||c);
+ 14  	end if;
+ 15  else
+ 16  	if (b>c) then
+ 17  		dbms_output.put_line('Largest is '||b);
+ 18  	else
+ 19  		dbms_output.put_line('Largest is '||c);
+ 20  	end if;
+ 21  end if;
+ 22* end;
+SQL> /
+Enter value for a: 5
+old   6: a:= &a;
+new   6: a:= 5;
+Enter value for b: 10
+old   7: b:= &b;
+new   7: b:= 10;
+Enter value for c: 15
+old   8: c:= &c;
+new   8: c:= 15;
+Largest is 15                                                                   
+
+PL/SQL procedure successfully completed.
+
+SQL> /
+Enter value for a: 10
+old   6: a:= &a;
+new   6: a:= 10;
+Enter value for b: 5
+old   7: b:= &b;
+new   7: b:= 5;
+Enter value for c: 15
+old   8: c:= &c;
+new   8: c:= 15;
+Largest is 15                                                                   
+
+PL/SQL procedure successfully completed.
+
+SQL> /
+Enter value for a: 15
+old   6: a:= &a;
+new   6: a:= 15;
+Enter value for b: 10
+old   7: b:= &b;
+new   7: b:= 10;
+Enter value for c: 5
+old   8: c:= &c;
+new   8: c:= 5;
+Largest is 15                                                                   
+
+PL/SQL procedure successfully completed.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  declare
+  2  a number;
+  3  begin
+  4  a:= &a;
+  5  if mod(a,2) then
+  6  	dbms_output.put_line(a||'is even');
+  7  else
+  8  	dbms_output.put_line(a|| 'is odd');
+  9  end if;
+ 10* end;
+SQL> /
+Enter value for a: 5
+old   4: a:= &a;
+new   4: a:= 5;
+if mod(a,2) then
+   *
+ERROR at line 5:
+ORA-06550: line 5, column 4: 
+PLS-00382: expression is of wrong type 
+ORA-06550: line 5, column 1: 
+PL/SQL: Statement ignored 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  declare
+  2  a number;
+  3  begin
+  4  a:= &a;
+  5  if mod(a,2)=0 then
+  6  	dbms_output.put_line(a||'is even');
+  7  else
+  8  	dbms_output.put_line(a|| 'is odd');
+  9  end if;
+ 10* end;
+SQL> /
+Enter value for a: 5
+old   4: a:= &a;
+new   4: a:= 5;
+5is odd                                                                         
+
+PL/SQL procedure successfully completed.
+
+SQL> /
+Enter value for a: 8
+old   4: a:= &a;
+new   4: a:= 8;
+8is even                                                                        
+
+PL/SQL procedure successfully completed.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  declare
+  2  a number;
+  3  begin
+  4  a:= &a;
+  5  if mod(a,2)=0 then
+  6  	dbms_output.put_line(a||' is even');
+  7  else
+  8  	dbms_output.put_line(a||' is odd');
+  9  end if;
+ 10* end;
+SQL> /
+Enter value for a: 5
+old   4: a:= &a;
+new   4: a:= 5;
+5 is odd                                                                        
+
+PL/SQL procedure successfully completed.
+
+SQL> /
+Enter value for a: 2
+old   4: a:= &a;
+new   4: a:= 2;
+2 is even                                                                       
+
+PL/SQL procedure successfully completed.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  -- FOR LOOP
+  2  DBMS_OUTPUT.PUT_LINE('Using FOR LOOP:');
+  3  FOR i IN 1..10 LOOP
+  4      DBMS_OUTPUT.PUT_LINE(i);
+  5* END LOOP;
+SQL> /
+DBMS_OUTPUT.PUT_LINE('Using FOR LOOP:');
+*
+ERROR at line 2:
+ORA-00900: invalid SQL statement 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  DBMS_OUTPUT.PUT_LINE('Using FOR LOOP:');
+  2  FOR i IN 1..10 LOOP
+  3      DBMS_OUTPUT.PUT_LINE(i);
+  4* END LOOP;
+  5  /
+DBMS_OUTPUT.PUT_LINE('Using FOR LOOP:');
+*
+ERROR at line 1:
+ORA-00900: invalid SQL statement 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  DBMS_OUTPUT.PUT_LINE('Using FOR LOOP:');
+  2  FOR i IN 1..10 LOOP
+  3      DBMS_OUTPUT.PUT_LINE(i);
+  4* END LOOP;
+SQL> ed
+Wrote file afiedt.buf
+
+  1  begin
+  2  DBMS_OUTPUT.PUT_LINE('Using FOR LOOP:');
+  3  FOR i IN 1..10 LOOP
+  4      DBMS_OUTPUT.PUT_LINE(i);
+  5  END LOOP;
+  6* end
+SQL> /
+end
+  *
+ERROR at line 6:
+ORA-06550: line 6, column 3: 
+PLS-00103: Encountered the symbol "end-of-file" when expecting one of the 
+following: 
+; <an identifier> <a double-quoted delimited-identifier> 
+The symbol ";" was substituted for "end-of-file" to continue. 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  begin
+  2  DBMS_OUTPUT.PUT_LINE('Using FOR LOOP:');
+  3  FOR i IN 1..10 LOOP
+  4      DBMS_OUTPUT.PUT_LINE(i);
+  5  END LOOP;
+  6* end;
+SQL> /
+Using FOR LOOP:                                                                 
+1                                                                               
+2                                                                               
+3                                                                               
+4                                                                               
+5                                                                               
+6                                                                               
+7                                                                               
+8                                                                               
+9                                                                               
+10                                                                              
+
+PL/SQL procedure successfully completed.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  Looping Structure
+  2  DECLARE
+  3      v_counter NUMBER := 1;
+  4  BEGIN
+  5      -- SIMPLE LOOP
+  6      DBMS_OUTPUT.PUT_LINE('Using SIMPLE LOOP:');
+  7      LOOP
+  8          DBMS_OUTPUT.PUT_LINE(v_counter);
+  9          v_counter := v_counter + 1;
+ 10          -- Exit condition
+ 11          EXIT WHEN v_counter > 10;
+ 12      END LOOP;
+ 13      -- WHILE LOOP
+ 14      DBMS_OUTPUT.PUT_LINE('Using WHILE LOOP:');
+ 15      v_counter := 1; -- Reset counter
+ 16      WHILE v_counter <= 10 LOOP
+ 17          DBMS_OUTPUT.PUT_LINE(v_counter);
+ 18          v_counter := v_counter + 1;
+ 19      END LOOP;
+ 20* END;
+ 21  /
+Looping Structure
+*
+ERROR at line 1:
+ORA-00900: invalid SQL statement 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2      v_counter NUMBER := 1;
+  3  BEGIN
+  4      -- SIMPLE LOOP
+  5      DBMS_OUTPUT.PUT_LINE('Using SIMPLE LOOP:');
+  6      LOOP
+  7          DBMS_OUTPUT.PUT_LINE(v_counter);
+  8          v_counter := v_counter + 1;
+  9          -- Exit condition
+ 10          EXIT WHEN v_counter > 10;
+ 11      END LOOP;
+ 12      -- WHILE LOOP
+ 13      DBMS_OUTPUT.PUT_LINE('Using WHILE LOOP:');
+ 14      v_counter := 1; -- Reset counter
+ 15      WHILE v_counter <= 10 LOOP
+ 16          DBMS_OUTPUT.PUT_LINE(v_counter);
+ 17          v_counter := v_counter + 1;
+ 18      END LOOP;
+ 19* END;
+ 20  /
+Using SIMPLE LOOP:                                                              
+1                                                                               
+2                                                                               
+3                                                                               
+4                                                                               
+5                                                                               
+6                                                                               
+7                                                                               
+8                                                                               
+9                                                                               
+10                                                                              
+Using WHILE LOOP:                                                               
+1                                                                               
+2                                                                               
+3                                                                               
+4                                                                               
+5                                                                               
+6                                                                               
+7                                                                               
+8                                                                               
+9                                                                               
+10                                                                              
+
+PL/SQL procedure successfully completed.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2      v_counter NUMBER := 1;
+  3  BEGIN
+  4      -- SIMPLE LOOP
+  5      DBMS_OUTPUT.PUT_LINE('Using SIMPLE LOOP:');
+  6      LOOP
+  7          DBMS_OUTPUT.PUT_LINE(v_counter);
+  8          v_counter := v_counter + 1;
+  9          -- Exit condition
+ 10          EXIT WHEN v_counter > 10;
+ 11      END LOOP;
+ 12      -- WHILE LOOP
+ 13      DBMS_OUTPUT.PUT_LINE('Using WHILE LOOP:');
+ 14      v_counter := 1; -- Reset counter
+ 15      WHILE v_counter <= 10 LOOP
+ 16          DBMS_OUTPUT.PUT_LINE(v_counter);
+ 17          v_counter := v_counter + 1;
+ 18      END LOOP;
+ 19* END;
+SQL> --Question 1
+SQL> declare
+  2  a number;
+  3  b number;
+  4  c number;
+  5  begin
+  6  a:= &a;
+  7  b:= &b;
+  8  c:= a+b;
+  9  dbms_output.put_line('Sum of a and b is '||c);
+ 10  end;
+ 11  /
+Enter value for a: 5
+old   6: a:= &a;
+new   6: a:= 5;
+Enter value for b: 10
+old   7: b:= &b;
+new   7: b:= 10;
+Sum of a and b is 15                                                            
+
+PL/SQL procedure successfully completed.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  declare
+  2  a number;
+  3  begin
+  4  a:=&a;
+  5  DBMS_OUTPUT.PUT_LINE('Using FOR LOOP:');
+  6  FOR i IN 1..a LOOP
+  7      DBMS_OUTPUT.PUT_LINE(i);
+  8  END LOOP;
+  9* end;
+SQL> /
+Enter value for a: 5
+old   4: a:=&a;
+new   4: a:=5;
+Using FOR LOOP:                                                                 
+1                                                                               
+2                                                                               
+3                                                                               
+4                                                                               
+5                                                                               
+
+PL/SQL procedure successfully completed.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  declare
+  2  a number;
+  3  begin
+  4  a:=&a;
+  5  DBMS_OUTPUT.PUT_LINE('Using FOR LOOP:');
+  6  FOR i IN 1..a LOOP
+  7      DBMS_OUTPUT.PUT_LINE(i);
+  8  END LOOP;
+  9* end;
+SQL> --Question 3
+SQL> ed
+Wrote file afiedt.buf
+
+  1  declare
+  2  a number;
+  3  begin
+  4  a:= &a;
+  5  if mod(a,2)=0 then
+  6  	dbms_output.put_line(a||' is even');
+  7  else
+  8  	dbms_output.put_line(a||' is odd');
+  9  end if;
+ 10* end;
+SQL> /
+Enter value for a: 5
+old   4: a:= &a;
+new   4: a:= 5;
+5 is odd                                                                        
+
+PL/SQL procedure successfully completed.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  declare
+  2  a number;
+  3  b number;
+  4  begin
+  5  a:=&a;
+  6  b:=1;
+  7  dbms_output.put_line('Factoril :');
+  8  FOR i IN 1..a LOOP
+  9      b:= b*a;
+ 10  END LOOP;
+ 11  dbms_output.put_line(b)
+ 12* end;
+SQL> /
+Enter value for a: 5
+old   5: a:=&a;
+new   5: a:=5;
+end;
+*
+ERROR at line 12:
+ORA-06550: line 12, column 1: 
+PLS-00103: Encountered the symbol "END" when expecting one of the following: 
+:= . ( % ; 
+The symbol ";" was substituted for "END" to continue. 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  declare
+  2  a number;
+  3  b number;
+  4  begin
+  5  a:=&a;
+  6  b:=1;
+  7  dbms_output.put_line('Factoril :');
+  8  FOR i IN 1..a LOOP
+  9      b:= b*a;
+ 10  END LOOP;
+ 11  dbms_output.put_line(b);
+ 12* end;
+SQL> /
+Enter value for a: 5
+old   5: a:=&a;
+new   5: a:=5;
+Factoril :                                                                      
+3125                                                                            
+
+PL/SQL procedure successfully completed.
+
+SQL> /
+Enter value for a: 4
+old   5: a:=&a;
+new   5: a:=4;
+Factoril :                                                                      
+256                                                                             
+
+PL/SQL procedure successfully completed.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  declare
+  2  a number;
+  3  b number;
+  4  begin
+  5  a:=&a;
+  6  b:=1;
+  7  dbms_output.put_line('Factoril :');
+  8  FOR i IN 1..a LOOP
+  9      b:= b*i;
+ 10  END LOOP;
+ 11  dbms_output.put_line(b);
+ 12* end;
+SQL> /
+Enter value for a: 5
+old   5: a:=&a;
+new   5: a:=5;
+Factoril :                                                                      
+120                                                                             
+
+PL/SQL procedure successfully completed.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  --first n fibonacci number
+  2  declare
+  3  fn number;
+  4  sn number;
+  5  ad number;
+  6  n number;
+  7  count number;
+  8  begin
+  9  fn:=0;
+ 10  sn:=1;
+ 11  n:=&n;
+ 12  count:=0;
+ 13  dbms_output.put_line('Factoril :');
+ 14  while count<n loop
+ 15  	dbms_output.put_line(fn);
+ 16  	add:=fn+sn;
+ 17  	fn=sn;
+ 18  	sn=add;
+ 19  	count:= count+1;
+ 20  end loop;
+ 21* end;
+SQL> /
+Enter value for n: 5
+old  11: n:=&n;
+new  11: n:=5;
+	fn=sn;
+	  *
+ERROR at line 17:
+ORA-06550: line 17, column 4: 
+PLS-00103: Encountered the symbol "=" when expecting one of the following: 
+:= . ( @ % ; 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  --first n fibonacci number
+  2  declare
+  3  fn number;
+  4  sn number;
+  5  ad number;
+  6  n number;
+  7  count number;
+  8  begin
+  9  fn:=0;
+ 10  sn:=1;
+ 11  n:=&n;
+ 12  count:=0;
+ 13  dbms_output.put_line('Factoril :');
+ 14  while count<n loop
+ 15  	dbms_output.put_line(fn);
+ 16  	add:=fn+sn;
+ 17  	fn:=sn;
+ 18  	sn:=add;
+ 19  	count:= count+1;
+ 20  end loop;
+ 21* end;
+SQL> /
+Enter value for n: 5
+old  11: n:=&n;
+new  11: n:=5;
+while count<n loop
+      *
+ERROR at line 14:
+ORA-06550: line 14, column 7: 
+PLS-00204: function or pseudo-column 'COUNT' may be used inside a SQL statement 
+only 
+ORA-06550: line 14, column 1: 
+PL/SQL: Statement ignored 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  --first n fibonacci number
+  2  declare
+  3  fn number;
+  4  sn number;
+  5  ad number;
+  6  n number;
+  7  c number;
+  8  begin
+  9  fn:=0;
+ 10  sn:=1;
+ 11  n:=&n;
+ 12  count:=0;
+ 13  dbms_output.put_line('Factoril :');
+ 14  while c<n loop
+ 15  	dbms_output.put_line(fn);
+ 16  	add:=fn+sn;
+ 17  	fn:=sn;
+ 18  	sn:=add;
+ 19  	count:= count+1;
+ 20  end loop;
+ 21* end;
+SQL> /
+Enter value for n: 5
+old  11: n:=&n;
+new  11: n:=5;
+count:=0;
+*
+ERROR at line 12:
+ORA-06550: line 12, column 1: 
+PLS-00201: identifier 'COUNT' must be declared 
+ORA-06550: line 12, column 1: 
+PL/SQL: Statement ignored 
+ORA-06550: line 16, column 2: 
+PLS-00201: identifier 'ADD' must be declared 
+ORA-06550: line 16, column 2: 
+PL/SQL: Statement ignored 
+ORA-06550: line 18, column 6: 
+PLS-00201: identifier 'ADD' must be declared 
+ORA-06550: line 18, column 2: 
+PL/SQL: Statement ignored 
+ORA-06550: line 19, column 2: 
+PLS-00201: identifier 'COUNT' must be declared 
+ORA-06550: line 19, column 2: 
+PL/SQL: Statement ignored 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  --first n fibonacci number
+  2  declare
+  3  fn number;
+  4  sn number;
+  5  ad number;
+  6  n number;
+  7  c number;
+  8  begin
+  9  fn:=0;
+ 10  sn:=1;
+ 11  n:=&n;
+ 12  c:=0;
+ 13  dbms_output.put_line('Factoril :');
+ 14  while c<n loop
+ 15  	dbms_output.put_line(fn);
+ 16  	add:=fn+sn;
+ 17  	fn:=sn;
+ 18  	sn:=add;
+ 19  	c:= c+1;
+ 20  end loop;
+ 21* end;
+SQL> /
+Enter value for n: 5
+old  11: n:=&n;
+new  11: n:=5;
+	add:=fn+sn;
+	*
+ERROR at line 16:
+ORA-06550: line 16, column 2: 
+PLS-00201: identifier 'ADD' must be declared 
+ORA-06550: line 16, column 2: 
+PL/SQL: Statement ignored 
+ORA-06550: line 18, column 6: 
+PLS-00201: identifier 'ADD' must be declared 
+ORA-06550: line 18, column 2: 
+PL/SQL: Statement ignored 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  --first n fibonacci number
+  2  declare
+  3  fn number;
+  4  sn number;
+  5  ad number;
+  6  n number;
+  7  c number;
+  8  begin
+  9  fn:=0;
+ 10  sn:=1;
+ 11  n:=&n;
+ 12  c:=0;
+ 13  dbms_output.put_line('Factoril :');
+ 14  while c<n loop
+ 15  	dbms_output.put_line(fn);
+ 16  	ad:=fn+sn;
+ 17  	fn:=sn;
+ 18  	sn:=add;
+ 19  	c:= c+1;
+ 20  end loop;
+ 21* end;
+SQL> /
+Enter value for n: 5
+old  11: n:=&n;
+new  11: n:=5;
+	sn:=add;
+	    *
+ERROR at line 18:
+ORA-06550: line 18, column 6: 
+PLS-00201: identifier 'ADD' must be declared 
+ORA-06550: line 18, column 2: 
+PL/SQL: Statement ignored 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  --first n fibonacci number
+  2  declare
+  3  fn number;
+  4  sn number;
+  5  ad number;
+  6  n number;
+  7  c number;
+  8  begin
+  9  fn:=0;
+ 10  sn:=1;
+ 11  n:=&n;
+ 12  c:=0;
+ 13  dbms_output.put_line('Factoril :');
+ 14  while c<n loop
+ 15  	dbms_output.put_line(fn);
+ 16  	ad:=fn+sn;
+ 17  	fn:=sn;
+ 18  	sn:=ad;
+ 19  	c:= c+1;
+ 20  end loop;
+ 21* end;
+SQL> /
+Enter value for n: 5
+old  11: n:=&n;
+new  11: n:=5;
+Factoril :                                                                      
+0                                                                               
+1                                                                               
+1                                                                               
+2                                                                               
+3                                                                               
+
+PL/SQL procedure successfully completed.
+
+SQL> /
+Enter value for n: 10
+old  11: n:=&n;
+new  11: n:=10;
+Factoril :                                                                      
+0                                                                               
+1                                                                               
+1                                                                               
+2                                                                               
+3                                                                               
+5                                                                               
+8                                                                               
+13                                                                              
+21                                                                              
+34                                                                              
+
+PL/SQL procedure successfully completed.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  --Question 6
+  2  declare
+  3  a number;
+  4  b number;
+  5  c number;
+  6  begin
+  7  a:= &a;
+  8  b:= &b;
+  9  c:= &c;
+ 10  if (a>b) then
+ 11  	if (a>c) then
+ 12  		dbms_output.put_line('Largest is '||a);
+ 13  	else
+ 14  		dbms_output.put_line('Largest is '||c);
+ 15  	end if;
+ 16  else
+ 17  	if (b>c) then
+ 18  		dbms_output.put_line('Largest is '||b);
+ 19  	else
+ 20  		dbms_output.put_line('Largest is '||c);
+ 21  	end if;
+ 22  end if;
+ 23* end;
+SQL> --/
+SQL> /
+Enter value for a: 5
+old   7: a:= &a;
+new   7: a:= 5;
+Enter value for b: 10
+old   8: b:= &b;
+new   8: b:= 10;
+Enter value for c: 12
+old   9: c:= &c;
+new   9: c:= 12;
+Largest is 12                                                                   
+
+PL/SQL procedure successfully completed.
+
+SQL> --Question 7
+SQL> ed
+Wrote file afiedt.buf
+
+  1  declare
+  2  n number;
+  3  rev number;
+  4  begin
+  5  n:=&n;
+  6  rev=0;
+  7  dbms_output.put_line('Factoril :');
+  8  while n>0 loop
+  9  	rev := (rev*10) + mod(n,10);
+ 10  	n := n/10;
+ 11  end loop;
+ 12  dbms_output.put_linr('Reversed number : '||rev);
+ 13* end;
+SQL> /
+Enter value for n: 12345
+old   5: n:=&n;
+new   5: n:=12345;
+rev=0;
+   *
+ERROR at line 6:
+ORA-06550: line 6, column 4: 
+PLS-00103: Encountered the symbol "=" when expecting one of the following: 
+:= . ( @ % ; 
+The symbol ":= was inserted before "=" to continue. 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  declare
+  2  n number;
+  3  rev number;
+  4  begin
+  5  n:=&n;
+  6  rev:=0;
+  7  dbms_output.put_line('Factoril :');
+  8  while n>0 loop
+  9  	rev := (rev*10) + mod(n,10);
+ 10  	n := n/10;
+ 11  end loop;
+ 12  dbms_output.put_linr('Reversed number : '||rev);
+ 13* end;
+SQL> /
+Enter value for n: 12345
+old   5: n:=&n;
+new   5: n:=12345;
+dbms_output.put_linr('Reversed number : '||rev);
+            *
+ERROR at line 12:
+ORA-06550: line 12, column 13: 
+PLS-00302: component 'PUT_LINR' must be declared 
+ORA-06550: line 12, column 1: 
+PL/SQL: Statement ignored 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  declare
+  2  n number;
+  3  rev number;
+  4  begin
+  5  n:=&n;
+  6  rev:=0;
+  7  dbms_output.put_line('Factoril :');
+  8  while n>0 loop
+  9  	rev := (rev*10) + mod(n,10);
+ 10  	n := n/10;
+ 11  end loop;
+ 12  dbms_output.put_line('Reversed number : '||rev);
+ 13* end;
+SQL> /
+Enter value for n: 12345
+old   5: n:=&n;
+new   5: n:=12345;
+Factoril :                                                                      
+Reversed number : ~                                                             
+
+PL/SQL procedure successfully completed.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  declare
+  2  n number;
+  3  rev number;
+  4  begin
+  5  n:=&n;
+  6  rev:=mod(n,10);
+  7  while n>0 loop
+  8  	n := n/10;
+  9  	rev := (rev*10) + mod(n,10);
+ 10  end loop;
+ 11  dbms_output.put_line('Reversed number : '||rev);
+ 12* end;
+SQL> /
+Enter value for n: 12345
+old   5: n:=&n;
+new   5: n:=12345;
+Reversed number : ~                                                             
+
+PL/SQL procedure successfully completed.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  declare
+  2  n number;
+  3  rev number;
+  4  begin
+  5  n:=&n;
+  6  rev:=0;
+  7  while n>0 loop
+  8  	n := n/10;
+  9  	rev := (rev*10);
+ 10  	rev := rev + mod(n,10);
+ 11  end loop;
+ 12  dbms_output.put_line('Reversed number : '||rev);
+ 13* end;
+SQL> /
+Enter value for n: 12345
+old   5: n:=&n;
+new   5: n:=12345;
+Reversed number : ~                                                             
+
+PL/SQL procedure successfully completed.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  declare
+  2  n number;
+  3  rev number;
+  4  begin
+  5  n:=&n;
+  6  rev:=0;
+  7  while n>0 loop
+  8  	rev := (rev*10) + mod(n,10);
+  9  	n := n/10;
+ 10  end loop;
+ 11  dbms_output.put_line('Reversed number : '||rev);
+ 12* end;
+SQL> /
+Enter value for n: 12345
+old   5: n:=&n;
+new   5: n:=12345;
+Reversed number : ~                                                             
+
+PL/SQL procedure successfully completed.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  declare
+  2  n number;
+  3  rev number;
+  4  begin
+  5  n:=&n;
+  6  rev:=0;
+  7  while n>0 loop
+  8  	rev := (rev*10) + mod(n,10);
+  9  	n := trun(n/10);
+ 10  end loop;
+ 11  dbms_output.put_line('Reversed number : '||rev);
+ 12* end;
+SQL> /
+Enter value for n: 12345
+old   5: n:=&n;
+new   5: n:=12345;
+	n := trun(n/10);
+	     *
+ERROR at line 9:
+ORA-06550: line 9, column 7: 
+PLS-00201: identifier 'TRUN' must be declared 
+ORA-06550: line 9, column 2: 
+PL/SQL: Statement ignored 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  declare
+  2  n integer;
+  3  rev integer;
+  4  begin
+  5  n:=&n;
+  6  rev:=0;
+  7  while n>0 loop
+  8  	rev := (rev*10) + mod(n,10);
+  9  	n := n/10;
+ 10  end loop;
+ 11  dbms_output.put_line('Reversed number : '||rev);
+ 12* end;
+SQL> /
+Enter value for n: 12345
+old   5: n:=&n;
+new   5: n:=12345;
+Reversed number : 55421                                                         
+
+PL/SQL procedure successfully completed.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  declare
+  2  n integer;
+  3  rev integer;
+  4  begin
+  5  n:=&n;
+  6  rev:=0;
+  7  while n>0 loop
+  8  	rev := (rev*10) + mod(n,10);
+  9  	n := n/10;
+ 10  end loop;
+ 11  dbms_output.put_line('Reversed number : '||rev);
+ 12* end;
+SQL> spool off;

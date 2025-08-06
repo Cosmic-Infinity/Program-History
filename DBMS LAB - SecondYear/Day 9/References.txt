@@ -1,0 +1,186 @@
+Procedural language extension of SQL (PL/SQL)
+
+Basic Syntax
+	Declare - Declaration of variables and constants
+	Begin - main code
+	exception (optional) - to handle runtime error
+	End;
+	/ - to compile the code
+
+	set serveroutput on; - do it before writing the code.
+	ed - to open the previous code in editor
+
+
+Declaration of variable
+	variablename datatype[size];
+	Eg. > a number[2];
+
+	varaiablename constant datatype[size];
+	Eg. > a constant number[2];
+Assign value to variable
+	a:=5;
+
+
+Example code:
+
+> set serveroutput on;
+> begin;
+> DBMS_OUTPUT.PUT_LINE('Hello');
+> end;
+> /
+
+
+NOTE: Defining size is optional
+
+
+Example code : (sum of 2 numbers)
+
+declare
+a number := 2;
+b number := 3;
+c number;
+begin
+c:= a+b;
+dbms_output.put_line('Sum of a and b is'||c);
+end;
+/
+
+
+Example code : (sum of 2 numbers with user input)
+
+declare
+a number;
+b number;
+c number;
+begin
+a:= &a;
+b:= &b;
+c:= a+b;
+dbms_output.put_line('Sum of a and b is '||c);
+end;
+/
+
+Example code : (maximum of 3 numbers)
+
+declare
+a number;
+b number;
+c number;
+begin
+a:= &a;
+b:= &b;
+c:= &c;
+if (a>b) then
+	if (a>c) then
+		dbms_output.put_line('Largest is '||a);
+	else
+		dbms_output.put_line('Largest is '||c);
+	end if;
+else
+	if (b>c) then
+		dbms_output.put_line('Largest is '||b);
+	else
+		dbms_output.put_line('Largest is '||c);
+	end if;
+end if;
+end;
+/
+
+
+Example code : (check even odd)
+
+declare
+a number;
+begin
+a:= &a;
+if mod(a,2)=0 then
+	dbms_output.put_line(a||' is even');
+else
+	dbms_output.put_line(a||' is odd');
+end if;
+end;
+/
+
+
+
+
+Looping Structures
+
+Basic Loop/Simple LOOP
+
+LOOP
+Statements
+END LOOP;
+
+The EXIT statement provides a way to stop the iterative loop:
+• EXIT WHEN i>10;
+• IF i>10 THEN EXIT;
+	END IF;
+
+
+While loop
+
+WHILE condition
+LOOP
+Statements
+END LOOP;
+
+FOR LOOP
+FOR variable IN [REVERSE] low..high
+LOOP
+Statements
+END LOOP;
+
+
+begin
+DBMS_OUTPUT.PUT_LINE('Using FOR LOOP:');
+FOR i IN 1..10 LOOP
+    DBMS_OUTPUT.PUT_LINE(i);
+END LOOP;
+end;
+/
+
+
+DECLARE
+    v_counter NUMBER := 1;
+BEGIN
+    -- SIMPLE LOOP
+    DBMS_OUTPUT.PUT_LINE('Using SIMPLE LOOP:');
+    LOOP
+        DBMS_OUTPUT.PUT_LINE(v_counter);
+        v_counter := v_counter + 1;
+        -- Exit condition
+        EXIT WHEN v_counter > 10;
+    END LOOP;
+
+    -- WHILE LOOP
+    DBMS_OUTPUT.PUT_LINE('Using WHILE LOOP:');
+    v_counter := 1; -- Reset counter
+    WHILE v_counter <= 10 LOOP
+        DBMS_OUTPUT.PUT_LINE(v_counter);
+        v_counter := v_counter + 1;
+    END LOOP;
+END;
+/
+
+
+
+
+Execute SQL commands inside PL/SQL
+
+// for table creation execute immediate is compulsory
+// for other queries/modification/insertion/deletion we can directly do
+
+begin
+update ee set name='Z' where id='1';
+dbms_output.put_line('Updated successfully');
+end
+/
+
+
+begin
+Execute immediate 'create table tablename(...attributes...);'
+dbms_output.put_line('Table tablename created successfully');
+end;
+/
+

@@ -1,0 +1,6 @@
+Subquery
+
+3 types
+1. Scalar Subquery (=, <=, >=, <, >, =!) (single row)
+2. Multiple Subquery (in, not in, any, all)
+3. Correlated Subquery

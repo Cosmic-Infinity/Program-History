@@ -1,0 +1,190 @@
+SQL> connect shubham/1626
+Connected.
+SQL> show user
+USER is "SHUBHAM"
+SQL> select current_timestamp from dual;
+
+CURRENT_TIMESTAMP                                                               
+---------------------------------------------------------------------------     
+07-JAN-25 03.28.18.127000 PM +05:30                                             
+
+
+SQL> create table client(clientno number(4), name varchar(10), city varchar(10), pincode number(6), state varchar(15), bal_due number(10));
+
+Table created.
+
+SQL> desc client;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CLIENTNO                                           NUMBER(4)
+ NAME                                               VARCHAR2(10)
+ CITY                                               VARCHAR2(10)
+ PINCODE                                            NUMBER(6)
+ STATE                                              VARCHAR2(15)
+ BAL_DUE                                            NUMBER(10)
+
+SQL> insert into client values(&clientno, '&name', '&city', &pincode, '&state', &bal_due);
+Enter value for clientno: 0001
+Enter value for name: ivan
+Enter value for city: bombay
+Enter value for pincode: 400054
+Enter value for state: maharashtra
+Enter value for bal_due: 15000
+old   1: insert into client values(&clientno, '&name', '&city', &pincode, '&state', &bal_due)
+new   1: insert into client values(0001, 'ivan', 'bombay', 400054, 'maharashtra', 15000)
+
+1 row created.
+
+SQL> /
+Enter value for clientno: 0002
+Enter value for name: vandana
+Enter value for city: madras
+Enter value for pincode: 780001
+Enter value for state: tamilnadu
+Enter value for bal_due: 0
+old   1: insert into client values(&clientno, '&name', '&city', &pincode, '&state', &bal_due)
+new   1: insert into client values(0002, 'vandana', 'madras', 780001, 'tamilnadu', 0)
+
+1 row created.
+
+SQL> /
+Enter value for clientno: 0003
+Enter value for name: pramada
+Enter value for city: bombay
+Enter value for pincode: 400057
+Enter value for state: maharashtra
+Enter value for bal_due: 5000
+old   1: insert into client values(&clientno, '&name', '&city', &pincode, '&state', &bal_due)
+new   1: insert into client values(0003, 'pramada', 'bombay', 400057, 'maharashtra', 5000)
+
+1 row created.
+
+SQL> /
+Enter value for clientno: 0004
+Enter value for name: basu
+Enter value for city: bombay
+Enter value for pincode: 400056
+Enter value for state: maharashtra
+Enter value for bal_due: 0
+old   1: insert into client values(&clientno, '&name', '&city', &pincode, '&state', &bal_due)
+new   1: insert into client values(0004, 'basu', 'bombay', 400056, 'maharashtra', 0)
+
+1 row created.
+
+SQL> /
+Enter value for clientno: 0005
+Enter value for name: ravi
+Enter value for city: delhi
+Enter value for pincode: 100001
+Enter value for state: null
+Enter value for bal_due: 2000
+old   1: insert into client values(&clientno, '&name', '&city', &pincode, '&state', &bal_due)
+new   1: insert into client values(0005, 'ravi', 'delhi', 100001, 'null', 2000)
+
+1 row created.
+
+SQL> /
+Enter value for clientno: 0006
+Enter value for name: rukmini
+Enter value for city: bombay
+Enter value for pincode: 400050
+Enter value for state: maharashtra
+Enter value for bal_due: 0
+old   1: insert into client values(&clientno, '&name', '&city', &pincode, '&state', &bal_due)
+new   1: insert into client values(0006, 'rukmini', 'bombay', 400050, 'maharashtra', 0)
+
+1 row created.
+
+SQL> select * from client;
+
+  CLIENTNO NAME       CITY          PINCODE STATE              BAL_DUE          
+---------- ---------- ---------- ---------- --------------- ----------          
+         1 ivan       bombay         400054 maharashtra          15000          
+         2 vandana    madras         780001 tamilnadu                0          
+         3 pramada    bombay         400057 maharashtra           5000          
+         4 basu       bombay         400056 maharashtra              0          
+         5 ravi       delhi          100001 null                  2000          
+         6 rukmini    bombay         400050 maharashtra              0          
+
+6 rows selected.
+
+SQL> --Question 1
+SQL> select name from client;
+
+NAME                                                                            
+----------                                                                      
+ivan                                                                            
+vandana                                                                         
+pramada                                                                         
+basu                                                                            
+ravi                                                                            
+rukmini                                                                         
+
+6 rows selected.
+
+SQL> -- Question 2
+SQL> select name,city from client;
+
+NAME       CITY                                                                 
+---------- ----------                                                           
+ivan       bombay                                                               
+vandana    madras                                                               
+pramada    bombay                                                               
+basu       bombay                                                               
+ravi       delhi                                                                
+rukmini    bombay                                                               
+
+6 rows selected.
+
+SQL> -- Question 4
+SQL> select * from client where city='bombay';
+
+  CLIENTNO NAME       CITY          PINCODE STATE              BAL_DUE          
+---------- ---------- ---------- ---------- --------------- ----------          
+         1 ivan       bombay         400054 maharashtra          15000          
+         3 pramada    bombay         400057 maharashtra           5000          
+         4 basu       bombay         400056 maharashtra              0          
+         6 rukmini    bombay         400050 maharashtra              0          
+
+SQL> -- Question 5
+SQL> select * from client where clientno=1 or clientno=2;
+
+  CLIENTNO NAME       CITY          PINCODE STATE              BAL_DUE          
+---------- ---------- ---------- ---------- --------------- ----------          
+         1 ivan       bombay         400054 maharashtra          15000          
+         2 vandana    madras         780001 tamilnadu                0          
+
+SQL> -- Question 8
+SQL> select * from client where city='bombay' or city='delhi' or city='madras';
+
+  CLIENTNO NAME       CITY          PINCODE STATE              BAL_DUE          
+---------- ---------- ---------- ---------- --------------- ----------          
+         1 ivan       bombay         400054 maharashtra          15000          
+         2 vandana    madras         780001 tamilnadu                0          
+         3 pramada    bombay         400057 maharashtra           5000          
+         4 basu       bombay         400056 maharashtra              0          
+         5 ravi       delhi          100001 null                  2000          
+         6 rukmini    bombay         400050 maharashtra              0          
+
+6 rows selected.
+
+SQL> -- Question 10
+SQL> select name,city,state from client where not(city='madras');
+
+NAME       CITY       STATE                                                     
+---------- ---------- ---------------                                           
+ivan       bombay     maharashtra                                               
+pramada    bombay     maharashtra                                               
+basu       bombay     maharashtra                                               
+ravi       delhi      null                                                      
+rukmini    bombay     maharashtra                                               
+
+SQL> show user
+USER is "SHUBHAM"
+SQL> select current_timestamp from dual;
+
+CURRENT_TIMESTAMP                                                               
+---------------------------------------------------------------------------     
+07-JAN-25 03.48.26.970000 PM +05:30                                             
+
+SQL> spool off;

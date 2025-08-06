@@ -1,0 +1,40 @@
+Grouping clause:
+a form of similar type of data.
+SQL> select salary from st group by salary;
+SQL> select salary,count(*) from st group by salary;
+SQL> select salary,count(*),min(salary),max(salary) from st where id=1 group by salary;
+
+Having clause: 
+it restricts group. it is used after group. it removes non-matching attributes.
+SQL> select salary from st having id=1 group by salary;
+
+
+precedence
+where > group > having > distinct > order by
+
+
+Join--------
+
+1. inner join
+	|- equi join
+		SQL> select * from Emp,Dpt where Emp.eid=Dpt.id;
+	|- non-equi join (theta)
+		SQL> select * from Emp,Dpt where Emp.eid[any relational operator here]Dpt.id;
+	|- natural join
+		SQL> select * from Emp natural join Dpt;
+	|- inner join
+		SQL> select * from Emp inner join Dpt on Emp.eid=Dpt.id;
+2. outer join
+	|- left outer join
+		SQL> select * from Emp left outer join Dpt on Emp.eid=Dpt.id;
+	|- right outer join
+		SQL> select * from Emp right outer join Dpt on Emp.eid=Dpt.id;
+	|- full outer join
+		SQL> select * from Emp full outer join Dpt on Emp.eid=Dpt.id;
+3. cross join
+	SQL> select * from Emp cross join Dpt;
+4. self join
+	SQL> SELECT e1.Name AS EmployeeName, e2.Name AS ManagerName FROM Employees e1 JOIN Employees e2 ON e1.ManagerID = e2.EmployeeID;
+
+
+

@@ -1,0 +1,25 @@
+#-----------------------------------------------------------
+# Vivado v2024.1 (64-bit)
+# SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
+# IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+# SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+# Start of session at: Sat Aug 31 18:43:21 2024
+# Process ID: 21776
+# Current directory: C:/Users/KIIT0001/Desktop/Works/DSD Lab/project_4
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent9012 C:\Users\KIIT0001\Desktop\Works\DSD Lab\project_4\project_4.xpr
+# Log file: C:/Users/KIIT0001/Desktop/Works/DSD Lab/project_4/vivado.log
+# Journal file: C:/Users/KIIT0001/Desktop/Works/DSD Lab/project_4\vivado.jou
+# Running On        :Silverstar
+# Platform          :Windows Server 2016 or Windows 10
+# Operating System  :22631
+# Processor Detail  :12th Gen Intel(R) Core(TM) i7-1255U
+# CPU Frequency     :2611 MHz
+# CPU Physical cores:10
+# CPU Logical cores :12
+# Host memory       :16874 MB
+# Swap memory       :2550 MB
+# Total Virtual     :19424 MB
+# Available Virtual :8512 MB
+#-----------------------------------------------------------
+start_gui
+open_project {C:/Users/KIIT0001/Desktop/Works/DSD Lab/project_4/project_4.xpr}

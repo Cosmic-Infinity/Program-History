@@ -1,0 +1,109 @@
+Functions
+functions are objects in SQL.
+They are of 2 types:
+	|- scalar/single row function
+		|- character function
+		|- number function
+		|- date function
+		|- conversion function
+		|- timestep function
+	|- group/multirow function
+		|- count(*)
+		|- sum()
+		|- avg()
+		|- min()
+		|- max()
+		|- std()
+		|- variance()
+
+
+NOTE: there exists a dummy table in SQL called dual (yes, the one from current timestamp)
+NOTE: scalar functions can be nested as much as you want
+
+
+
+
+Character function
+A. Case manipulation
+	|- upper
+		SQL> select upper('shubham') from dual;
+	|- lower
+		SQL> select lower('SHUBHAM') as NAME from dual;
+	|- initcap (converts first character upper, all other lower)
+		SQL> select initcap('SHUBHAM') as NAME from dual;
+
+B. String manipulation
+	|- length
+		SQL> select length('SHUBHAM') as howlong from dual;
+	|- concat
+		SQL> select concat('SHUBHAM ', 'SINHA') as fullname from dual;
+	|- lpad (padding on left)
+		SQL> select lpad('SHUBHAM', 15) from dual; //pad the remaining space on right with space
+		SQL> select lpad('SHUBHAM', 15, '*') from dual; //pad the remaining space on right with *
+	|- rpad (same as lpad but for right side)
+	|- ltrim
+		SQL> select ltrim('    SHUBHAM') from dual; //trims the spaces on left
+		SQL> select ltrim('SHUBHAM', 'S') from dual; //trims till S. cannot do till U even if parameter U
+	|- rtrim (trim on right)
+	|- trim (trim on both sides)
+	|- translate
+		SQL> select translate('SHUBHAM', 'H', 5) from dual;
+		SQL> select translate('SHUBHAM', 'HAM', 5) from dual; //all possible combinations of HAM?
+	|- replace
+		select replace(jobtitle, 'Engineer', 'Developer') from emp_tbl;	
+	|- substr
+		SQL> select substr(name, 0, 3) from emp_tbl;
+		SQL> select substr(name, -3) from emp_tbl;
+	|- instr (similar to indexof. can take position parameter as well)
+	|- reverse (reverses the string)
+
+Number Functions
+	|- abs()
+		SQL> select abs(-5.6), abs(1.2) from dual; // 5.6, 1.2
+	|- ceil()
+		SQL> select abs(-5.6), abs(1.2) from dual; // -5, 2
+	|- floor()
+		SQL> select floor(-5.6), floor(1.2) from dual; // -6, 1
+	|- power(,)
+		SQL> select power(5,2), power(3,3) from dual; // 25, 27
+	|- mod(,)
+		SQL> select mod(3,2), mod(4,2) from dual; // 1, 0
+	|- sign
+		SQL> select sign(-3.2), sign(7), sign(0) from dual; // -1, 1, 0
+	|- log(,) //base,power
+		SQL> select log(3,2), log(2,8) from dual; // 0.630929754, 3
+	|- ln()
+		SQL> select ln(5) from dual; //1.60943791
+	|- exp() // e to the power
+		select exp(5) from dual; //148.413159
+	|- trunc() //truncate
+		select trunc(5.3456, 2) from dual; //5.34
+	|- round(,)
+		SQL> select round(5.3556, 2) from dual; // 5.36
+	|- sin() //input in radian
+		 select sin(3.141692) from dual; // -.00009935
+	|- ...other trigonometric funcitons
+
+
+Date functions
+	|- sysdate()
+	|- currentdate()
+	|- add_months()
+		SQL> select add_months(sysdate, 3) from dual; //adds the number of months to current month
+	|- last_day() (of current month)
+	|- next_day()
+		select next_day(sysdate, 'saturday') from dual; //next weekday from current date say
+	|- month_between()
+		SQL> select months_between(sysdate, '1-JAN-2000') from dual;
+
+
+Conversion function
+	|- to_number(char, FORMAT)
+	|- to_date(char, FORMAT)
+	|- to_char(number, FORMAT)
+	|- to_char(date, FORMAT)
+
+
+
+
+

@@ -1,0 +1,169 @@
+SQL> connect shubham/1626;
+Connected.
+SQL> select current_timestamp from dual;
+
+CURRENT_TIMESTAMP                                                               
+---------------------------------------------------------------------------     
+28-JAN-25 03.40.15.812000 PM +05:30                                             
+
+SQL> create table challan_header(challan_no varchar(6), s_order_no varchar(6), challan_date date not null, billed_yn char(1) default 'n');
+
+Table created.
+
+SQL> insert into challan_header values('&challan_no', '&s_order_no', '&challan_date', '&billed_yn');
+Enter value for challan_no: CH9001
+Enter value for s_order_no: 019001
+Enter value for challan_date: 12-DEC-95
+Enter value for billed_yn: Y
+old   1: insert into challan_header values('&challan_no', '&s_order_no', '&challan_date', '&billed_yn')
+new   1: insert into challan_header values('CH9001', '019001', '12-DEC-95', 'Y')
+
+1 row created.
+
+SQL> /
+Enter value for challan_no: CH6865
+Enter value for s_order_no: 046865
+Enter value for challan_date: 12-NOV-95
+Enter value for billed_yn: Y
+old   1: insert into challan_header values('&challan_no', '&s_order_no', '&challan_date', '&billed_yn')
+new   1: insert into challan_header values('CH6865', '046865', '12-NOV-95', 'Y')
+
+1 row created.
+
+SQL> /
+Enter value for challan_no: CH3965
+Enter value for s_order_no: 010008
+Enter value for challan_date: 12-OCT-95
+Enter value for billed_yn: Y
+old   1: insert into challan_header values('&challan_no', '&s_order_no', '&challan_date', '&billed_yn')
+new   1: insert into challan_header values('CH3965', '010008', '12-OCT-95', 'Y')
+
+1 row created.
+
+SQL> alter table challan_header add primary key(challan_no);
+
+Table altered.
+
+SQL> create table challan_details(challan_no varchar(6) references challan_header(challan_no),product_no varchar(6), qty_disp number(4) not null);
+
+Table created.                                                     
+
+SQL> insert into challan_details values('&challan_no', '&product_no', &qty_disp);
+Enter value for challan_no: CH9001
+Enter value for product_no: P00001
+Enter value for qty_disp: 4
+old   1: insert into challan_details values('&challan_no', '&product_no', &qty_disp)
+new   1: insert into challan_details values('CH9001', 'P00001', 4)
+
+1 row created.
+
+SQL> /
+Enter value for challan_no: CH9001
+Enter value for product_no: P07965
+Enter value for qty_disp: 1
+old   1: insert into challan_details values('&challan_no', '&product_no', &qty_disp)
+new   1: insert into challan_details values('CH9001', 'P07965', 1)
+
+1 row created.
+
+SQL> /
+Enter value for challan_no: CH9001
+Enter value for product_no: P07885
+Enter value for qty_disp: 1
+old   1: insert into challan_details values('&challan_no', '&product_no', &qty_disp)
+new   1: insert into challan_details values('CH9001', 'P07885', 1)
+
+1 row created.
+
+SQL> /
+Enter value for challan_no: CH6865
+Enter value for product_no: P07868
+Enter value for qty_disp: 3
+old   1: insert into challan_details values('&challan_no', '&product_no', &qty_disp)
+new   1: insert into challan_details values('CH6865', 'P07868', 3)
+
+1 row created.
+
+SQL> /
+Enter value for challan_no: CH6865
+Enter value for product_no: P03453
+Enter value for qty_disp: 4
+old   1: insert into challan_details values('&challan_no', '&product_no', &qty_disp)
+new   1: insert into challan_details values('CH6865', 'P03453', 4)
+
+1 row created.
+
+SQL> /
+Enter value for challan_no: CH6865
+Enter value for product_no: P00001
+Enter value for qty_disp: 10
+old   1: insert into challan_details values('&challan_no', '&product_no', &qty_disp)
+new   1: insert into challan_details values('CH6865', 'P00001', 10)
+
+1 row created.
+
+SQL> /
+Enter value for challan_no: CH3965
+Enter value for product_no: P00001
+Enter value for qty_disp: 5
+old   1: insert into challan_details values('&challan_no', '&product_no', &qty_disp)
+new   1: insert into challan_details values('CH3965', 'P00001', 5)
+
+1 row created.
+
+SQL> /
+Enter value for challan_no: CH3935
+Enter value for product_no: P07975
+Enter value for qty_disp: 2
+old   1: insert into challan_details values('&challan_no', '&product_no', &qty_disp)
+new   1: insert into challan_details values('CH3935', 'P07975', 2)
+insert into challan_details values('CH3935', 'P07975', 2)
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (SHUBHAM.SYS_C008316) violated - parent key not 
+found 
+
+
+SQL> /
+Enter value for challan_no: CH3965
+Enter value for product_no: P07975
+Enter value for qty_disp: 2
+old   1: insert into challan_details values('&challan_no', '&product_no', &qty_disp)
+new   1: insert into challan_details values('CH3965', 'P07975', 2)
+
+1 row created.
+
+SQL> SELECT * from challan_header;
+
+CHALLA S_ORDE CHALLAN_D B                                                       
+------ ------ --------- -                                                       
+CH9001 019001 12-DEC-95 Y                                                       
+CH6865 046865 12-NOV-95 Y                                                       
+CH3965 010008 12-OCT-95 Y                                                       
+
+SQL> SELECT * from challan_details;
+
+CHALLA PRODUC   QTY_DISP                                                        
+------ ------ ----------                                                        
+CH9001 P00001          4                                                        
+CH9001 P07965          1                                                        
+CH9001 P07885          1                                                        
+CH6865 P07868          3                                                        
+CH6865 P03453          4                                                        
+CH6865 P00001         10                                                        
+CH3965 P00001          5                                                        
+CH3965 P07975          2                                                        
+
+8 rows selected.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> select current_timestamp from dual;
+
+CURRENT_TIMESTAMP                                                               
+---------------------------------------------------------------------------     
+28-JAN-25 03.56.03.205000 PM +05:30                                             
+
+SQL> spool off;

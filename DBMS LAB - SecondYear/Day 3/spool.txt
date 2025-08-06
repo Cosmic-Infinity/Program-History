@@ -1,0 +1,264 @@
+SQL> connect shubham/1626
+Connected.
+SQL> show user;
+USER is "SHUBHAM"
+SQL> create table employee(id number(5), lastname varchar(10), firstname varchar(10), middlename varchar(10), fathername varchar(10), mothername varchar(10), hiredate date, address varchar(15), city varchar(10), state varchar(10), zip number(6), phone number(10));
+
+Table created.
+
+SQL> create table school(id number(5), name varchar(10));
+
+Table created.
+
+SQL> create table employee_alignment(employeeid number(5), schoolid number(5));
+
+Table created.
+
+SQL> create table job(id number(5), name varchar(10), title varchar(10), salary number(5), bonus number(5));
+
+Table created.
+
+SQL> create table employee_pay(employeeid number(5), jobid number(5));
+
+Table created.
+
+SQL> create table product(id number(5), name varchar(10), createddate date, createdby varchar(10), lastmodifieddate date, lastmodifiedby varchar(10), cost number(5), injecteddate date);
+
+Table created.
+
+SQL> insert into employee values(&id, '&lastname', '&firstname', '&middlename', '&fathername', '&mothername', '&hiredate', '&address', '&city', '&state', &zip, &phone);
+Enter value for id: 11111
+Enter value for lastname: karmakar
+Enter value for firstname: ramu
+Enter value for middlename: kumar
+Enter value for fathername: father
+Enter value for mothername: mother
+Enter value for hiredate: 12-dec-22
+Enter value for address: patia
+Enter value for city: bbsr
+Enter value for state: odisha
+Enter value for zip: 751024
+Enter value for phone: 999999999
+old   1: insert into employee values(&id, '&lastname', '&firstname', '&middlename', '&fathername', '&mothername', '&hiredate', '&address', '&city', '&state', &zip, &phone)
+new   1: insert into employee values(11111, 'karmakar', 'ramu', 'kumar', 'father', 'mother', '12-dec-22', 'patia', 'bbsr', 'odisha', 751024, 999999999)
+
+1 row created.
+
+SQL> /
+Enter value for id: 22222
+Enter value for lastname: dutta
+Enter value for firstname: shyam
+Enter value for middlename: NULL
+Enter value for fathername: father
+Enter value for mothername: mother
+Enter value for hiredate: 25-mar-19
+Enter value for address: rourkela
+Enter value for city: rrkl
+Enter value for state: odisha
+Enter value for zip: 757575
+Enter value for phone: 888888888
+old   1: insert into employee values(&id, '&lastname', '&firstname', '&middlename', '&fathername', '&mothername', '&hiredate', '&address', '&city', '&state', &zip, &phone)
+new   1: insert into employee values(22222, 'dutta', 'shyam', 'NULL', 'father', 'mother', '25-mar-19', 'rourkela', 'rrkl', 'odisha', 757575, 888888888)
+
+1 row created.
+
+SQL> /
+Enter value for id: 33333
+Enter value for lastname: choudhary
+Enter value for firstname: kishore
+Enter value for middlename: kumar
+Enter value for fathername: father
+Enter value for mothername: mother
+Enter value for hiredate: 22-jun-21
+Enter value for address: birbhum
+Enter value for city: nht
+Enter value for state: bengal
+Enter value for zip: 425011
+Enter value for phone: 777777777
+old   1: insert into employee values(&id, '&lastname', '&firstname', '&middlename', '&fathername', '&mothername', '&hiredate', '&address', '&city', '&state', &zip, &phone)
+new   1: insert into employee values(33333, 'choudhary', 'kishore', 'kumar', 'father', 'mother', '22-jun-21', 'birbhum', 'nht', 'bengal', 425011, 777777777)
+
+1 row created.
+
+SQL> /
+Enter value for id: 44444
+Enter value for lastname: kumari
+Enter value for firstname: ranni
+Enter value for middlename: NULL
+Enter value for fathername: father
+Enter value for mothername: mother
+Enter value for hiredate: 23-nov-23
+Enter value for address: delhi
+Enter value for city: delhi
+Enter value for state: delhi
+Enter value for zip: 412345
+Enter value for phone: 666666666
+old   1: insert into employee values(&id, '&lastname', '&firstname', '&middlename', '&fathername', '&mothername', '&hiredate', '&address', '&city', '&state', &zip, &phone)
+new   1: insert into employee values(44444, 'kumari', 'ranni', 'NULL', 'father', 'mother', '23-nov-23', 'delhi', 'delhi', 'delhi', 412345, 666666666)
+
+1 row created.
+
+SQL> /
+Enter value for id: 55555
+Enter value for lastname: roy
+Enter value for firstname: suresh
+Enter value for middlename: NULL
+Enter value for fathername: father
+Enter value for mothername: mother
+Enter value for hiredate: 31-jan-20
+Enter value for address: rajkot
+Enter value for city: rajkot
+Enter value for state: gujrat
+Enter value for zip: 654364
+Enter value for phone: 555555555
+old   1: insert into employee values(&id, '&lastname', '&firstname', '&middlename', '&fathername', '&mothername', '&hiredate', '&address', '&city', '&state', &zip, &phone)
+new   1: insert into employee values(55555, 'roy', 'suresh', 'NULL', 'father', 'mother', '31-jan-20', 'rajkot', 'rajkot', 'gujrat', 654364, 555555555)
+
+1 row created.
+           
+SQL> set linesize 200;
+SQL> select * from employee;
+
+        ID LASTNAME   FIRSTNAME  MIDDLENAME FATHERNAME MOTHERNAME HIREDATE  ADDRESS         CITY       STATE             ZIP      PHONE                                                                 
+---------- ---------- ---------- ---------- ---------- ---------- --------- --------------- ---------- ---------- ---------- ----------                                                                 
+     11111 karmakar   ramu       kumar      father     mother     12-DEC-22 patia           bbsr       odisha         751024  999999999                                                                 
+     22222 dutta      shyam      NULL       father     mother     25-MAR-19 rourkela        rrkl       odisha         757575  888888888                                                                 
+     33333 choudhary  kishore    kumar      father     mother     22-JUN-21 birbhum         nht        bengal         425011  777777777                                                                 
+     44444 kumari     ranni      NULL       father     mother     23-NOV-23 delhi           delhi      delhi          412345  666666666                                                                 
+     55555 roy        suresh     NULL       father     mother     31-JAN-20 rajkot          rajkot     gujrat         654364  555555555                                                                 
+
+SQL> select count(*) from employee where state='odisha';
+
+  COUNT(*)                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+         2                                                                                                                                                                                              
+
+SQL> update employee set hiredate='12-mar-24' where hiredate='22-jun-21';
+
+1 row updated.
+
+
+SQL> select * from employee where hiredate='12-mar-24';
+
+        ID LASTNAME   FIRSTNAME  MIDDLENAME FATHERNAME MOTHERNAME HIREDATE  ADDRESS         CITY       STATE             ZIP      PHONE                                                                 
+---------- ---------- ---------- ---------- ---------- ---------- --------- --------------- ---------- ---------- ---------- ----------                                                                 
+     33333 choudhary  kishore    kumar      father     mother     12-MAR-24 birbhum         nht        bengal         425011  777777777                                                                 
+
+SQL> insert into product values(&id, '&name', '&createddate', '&createdby', '&lastmodifieddate', '&lastmodifiedby', &cost, '&injecteddate');
+Enter value for id: 11111
+Enter value for name: soap
+Enter value for createddate: 01-jan-20
+Enter value for createdby: indiana
+Enter value for lastmodifieddate: 02-jan-20
+Enter value for lastmodifiedby: abc
+Enter value for cost: 81000
+Enter value for injecteddate: 03-jan-20
+old   1: insert into product values(&id, '&name', '&createddate', '&createdby', '&lastmodifieddate', '&lastmodifiedby', &cost, '&injecteddate')
+new   1: insert into product values(11111, 'soap', '01-jan-20', 'indiana', '02-jan-20', 'abc', 81000, '03-jan-20')
+
+1 row created.
+
+SQL> /
+Enter value for id: 22222
+Enter value for name: towel
+Enter value for createddate: 02-feb-21
+Enter value for createdby: ohio
+Enter value for lastmodifieddate: 03-feb-21
+Enter value for lastmodifiedby: bcd
+Enter value for cost: 12000
+Enter value for injecteddate: 04-feb-21
+old   1: insert into product values(&id, '&name', '&createddate', '&createdby', '&lastmodifieddate', '&lastmodifiedby', &cost, '&injecteddate')
+new   1: insert into product values(22222, 'towel', '02-feb-21', 'ohio', '03-feb-21', 'bcd', 12000, '04-feb-21')
+
+1 row created.
+
+
+SQL> /
+Enter value for id: 33333
+Enter value for name: hanger
+Enter value for createddate: 12-jan-19
+Enter value for createdby: michigan
+Enter value for lastmodifieddate: 12-jan-19
+Enter value for lastmodifiedby: abc
+Enter value for cost: 90000
+Enter value for injecteddate: 13-jan-19
+old   1: insert into product values(&id, '&name', '&createddate', '&createdby', '&lastmodifieddate', '&lastmodifiedby', &cost, '&injecteddate')
+new   1: insert into product values(33333, 'hanger', '12-jan-19', 'michigan', '12-jan-19', 'abc', 90000, '13-jan-19')
+
+1 row created.
+
+SQL> /
+Enter value for id: 44444
+Enter value for name: washer
+Enter value for createddate: 21-jun-20
+Enter value for createdby: illinois
+Enter value for lastmodifieddate: 22-jun-20
+Enter value for lastmodifiedby: bcd
+Enter value for cost: 99999
+Enter value for injecteddate: 23-jun-20
+old   1: insert into product values(&id, '&name', '&createddate', '&createdby', '&lastmodifieddate', '&lastmodifiedby', &cost, '&injecteddate')
+new   1: insert into product values(44444, 'washer', '21-jun-20', 'illinois', '22-jun-20', 'bcd', 99999, '23-jun-20')
+
+1 row created.
+
+SQL> /
+Enter value for id: 55555
+Enter value for name: dryer
+Enter value for createddate: 11-dec-21
+Enter value for createdby: washington
+Enter value for lastmodifieddate: 11-dec-21
+Enter value for lastmodifiedby: abc
+Enter value for cost: 50000
+Enter value for injecteddate: 12-dec-21
+old   1: insert into product values(&id, '&name', '&createddate', '&createdby', '&lastmodifieddate', '&lastmodifiedby', &cost, '&injecteddate')
+new   1: insert into product values(55555, 'dryer', '11-dec-21', 'washington', '11-dec-21', 'abc', 50000, '12-dec-21')
+
+1 row created.
+
+SQL> select * from product;
+
+        ID NAME       CREATEDDA CREATEDBY  LASTMODIF LASTMODIFI       COST INJECTEDD                                                                                                                    
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------                                                                                                                    
+     11111 soap       01-JAN-20 indiana    02-JAN-20 abc             81000 03-JAN-20                                                                                                                    
+     22222 towel      02-FEB-21 ohio       03-FEB-21 bcd             12000 04-FEB-21                                                                                                                    
+     33333 hanger     12-JAN-19 michigan   12-JAN-19 abc             90000 13-JAN-19                                                                                                                    
+     44444 washer     21-JUN-20 illinois   22-JUN-20 bcd             99999 23-JUN-20                                                                                                                    
+     55555 dryer      11-DEC-21 washington 11-DEC-21 abc             50000 12-DEC-21                                                                                                                    
+
+SQL> select * from product where cost>79999 and cost<=99999;
+
+        ID NAME       CREATEDDA CREATEDBY  LASTMODIF LASTMODIFI       COST INJECTEDD                                                                                                                    
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------                                                                                                                    
+     11111 soap       01-JAN-20 indiana    02-JAN-20 abc             81000 03-JAN-20                                                                                                                    
+     33333 hanger     12-JAN-19 michigan   12-JAN-19 abc             90000 13-JAN-19                                                                                                                    
+     44444 washer     21-JUN-20 illinois   22-JUN-20 bcd             99999 23-JUN-20                                                                                                                    
+
+
+SQL> select avg(cost) from product;
+
+ AVG(COST)                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+   66599.8                                                                                                                                                                                              
+
+SQL> select * from product where createdby='indiana' or createdby='ohio' or createdby='michigan' or createdby='illinois';
+
+        ID NAME       CREATEDDA CREATEDBY  LASTMODIF LASTMODIFI       COST INJECTEDD                                                                                                                    
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------                                                                                                                    
+     11111 soap       01-JAN-20 indiana    02-JAN-20 abc             81000 03-JAN-20                                                                                                                    
+     22222 towel      02-FEB-21 ohio       03-FEB-21 bcd             12000 04-FEB-21                                                                                                                    
+     33333 hanger     12-JAN-19 michigan   12-JAN-19 abc             90000 13-JAN-19                                                                                                                    
+     44444 washer     21-JUN-20 illinois   22-JUN-20 bcd             99999 23-JUN-20                                                                                                                    
+
+SQL> commit;
+
+Commit complete.
+
+SQL> select current_timestamp from dual;
+
+CURRENT_TIMESTAMP                                                                                                                                                                                       
+---------------------------------------------------------------------------                                                                                                                             
+14-JAN-25 04.00.44.338000 PM +05:30                                                                                                                                                                     
+
+SQL> show user;
+USER is "SHUBHAM"
+SQL> spool off;

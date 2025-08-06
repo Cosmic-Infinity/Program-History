@@ -1,0 +1,6 @@
+Q8. Write a PL/SQL block to create a table named Students with columns (Student_ID, Name, Marks).
+Q9. Write a PL/SQL program to accept Student_ID, Name, and Marks from the user and insert them into the Students table.
+Q10. Write a PL/SQL program to accept a Student_ID from the user and display the student's details using a SELECT query.
+Q11. Write a PL/SQL program to accept a Student_ID and increase the marks by 10% if they are below 50.
+Q12. Write a PL/SQL program to accept a Student_ID and delete the student record if the marks are less than 30.
+Q13. Write a PL/SQL program to fetch and display all Students records from the Students table using a FOR LOOP.

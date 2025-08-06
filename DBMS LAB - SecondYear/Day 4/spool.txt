@@ -1,0 +1,279 @@
+SQL> connect shubham/1626
+Connected.
+SQL> show user;
+USER is "SHUBHAM"
+SQL> select current_timestamp from dual;
+
+CURRENT_TIMESTAMP                                                               
+---------------------------------------------------------------------------     
+21-JAN-25 02.48.55.727000 PM +05:30                                             
+
+SQL> create table emptable(empid number(5), name varchar(10), department varchar(10), gender varchar(1), salary number(10), bonus number(10), dateofjoining date);
+
+Table created.
+
+SQL> set linesize 100;
+SQL> desc emptable;
+ Name                                                  Null?    Type
+ ----------------------------------------------------- -------- ------------------------------------
+ EMPID                                                          NUMBER(5)
+ NAME                                                           VARCHAR2(10)
+ DEPARTMENT                                                     VARCHAR2(10)
+ GENDER                                                         VARCHAR2(1)
+ SALARY                                                         NUMBER(10)
+ BONUS                                                          NUMBER(10)
+ DATEOFJOINING                                                  DATE
+
+SQL> insert into emptable values(&empid, '&name', '&department', '&gender', &salary, &bonus, '&dateofjoining');
+Enter value for empid: 1
+Enter value for name: rohan
+Enter value for department: finance
+Enter value for gender: m
+Enter value for salary: 50000
+Enter value for bonus: 25000
+Enter value for dateofjoining: 14-feb-20
+old   1: insert into emptable values(&empid, '&name', '&department', '&gender', &salary, &bonus, '&dateofjoining')
+new   1: insert into emptable values(1, 'rohan', 'finance', 'm', 50000, 25000, '14-feb-20')
+
+1 row created.
+
+SQL> /
+Enter value for empid: 2
+Enter value for name: sohan
+Enter value for department: electrical
+Enter value for gender: m
+Enter value for salary: 60000
+Enter value for bonus: 10000
+Enter value for dateofjoining: 21-mar-10
+old   1: insert into emptable values(&empid, '&name', '&department', '&gender', &salary, &bonus, '&dateofjoining')
+new   1: insert into emptable values(2, 'sohan', 'electrical', 'm', 60000, 10000, '21-mar-10')
+
+1 row created.
+
+SQL> /
+Enter value for empid: 3
+Enter value for name: john
+Enter value for department: cs
+Enter value for gender: m
+Enter value for salary: 90000
+Enter value for bonus: 20000
+Enter value for dateofjoining: 11-apr-12
+old   1: insert into emptable values(&empid, '&name', '&department', '&gender', &salary, &bonus, '&dateofjoining')
+new   1: insert into emptable values(3, 'john', 'cs', 'm', 90000, 20000, '11-apr-12')
+
+1 row created.
+
+SQL> /
+Enter value for empid: 4
+Enter value for name: rama
+Enter value for department: cs
+Enter value for gender: f
+Enter value for salary: 125000
+Enter value for bonus: 12500
+Enter value for dateofjoining: 06-sep-18
+old   1: insert into emptable values(&empid, '&name', '&department', '&gender', &salary, &bonus, '&dateofjoining')
+new   1: insert into emptable values(4, 'rama', 'cs', 'f', 125000, 12500, '06-sep-18')
+
+1 row created.
+
+SQL> /
+Enter value for empid: 5
+Enter value for name: shyama
+Enter value for department: cs
+Enter value for gender: f
+Enter value for salary: 40000
+Enter value for bonus: 30000
+Enter value for dateofjoining: 22-jul-24
+old   1: insert into emptable values(&empid, '&name', '&department', '&gender', &salary, &bonus, '&dateofjoining')
+new   1: insert into emptable values(5, 'shyama', 'cs', 'f', 40000, 30000, '22-jul-24')
+
+1 row created.
+
+SQL> /
+Enter value for empid: 6
+Enter value for name: rakesh
+Enter value for department: marketing
+Enter value for gender: m
+Enter value for salary: 80000
+Enter value for bonus: 20000
+Enter value for dateofjoining: 11-jun-14
+old   1: insert into emptable values(&empid, '&name', '&department', '&gender', &salary, &bonus, '&dateofjoining')
+new   1: insert into emptable values(6, 'rakesh', 'marketing', 'm', 80000, 20000, '11-jun-14')
+
+1 row created.
+
+SQL> /
+Enter value for empid: 7
+Enter value for name: rashika
+Enter value for department: pr
+Enter value for gender: f
+Enter value for salary: 40000
+Enter value for bonus: 20000
+Enter value for dateofjoining: 25-jan-23
+old   1: insert into emptable values(&empid, '&name', '&department', '&gender', &salary, &bonus, '&dateofjoining')
+new   1: insert into emptable values(7, 'rashika', 'pr', 'f', 40000, 20000, '25-jan-23')
+
+1 row created.
+
+SQL> /
+Enter value for empid: 8
+Enter value for name: shyama
+Enter value for department: finance
+Enter value for gender: f
+Enter value for salary: 90000
+Enter value for bonus: 30000
+Enter value for dateofjoining: 23-aug-13
+old   1: insert into emptable values(&empid, '&name', '&department', '&gender', &salary, &bonus, '&dateofjoining')
+new   1: insert into emptable values(8, 'shyama', 'finance', 'f', 90000, 30000, '23-aug-13')
+
+1 row created.
+
+SQL> select * from emptable;
+
+     EMPID NAME       DEPARTMENT G     SALARY      BONUS DATEOFJOI                                  
+---------- ---------- ---------- - ---------- ---------- ---------                                  
+         1 rohan      finance    m      50000      25000 14-FEB-20                                  
+         2 sohan      electrical m      60000      10000 21-MAR-10                                  
+         3 john       cs         m      90000      20000 11-APR-12                                  
+         4 rama       cs         f     125000      12500 06-SEP-18                                  
+         5 shyama     cs         f      40000      30000 22-JUL-24                                  
+         6 rakesh     marketing  m      80000      20000 11-JUN-14                                  
+         7 rashika    pr         f      40000      20000 25-JAN-23                                  
+         8 shyama     finance    f      90000      30000 23-AUG-13                                  
+
+8 rows selected.
+
+SQL> --question 1
+SQL> select * from emptable where department='cs' and (salary between 80000 and 100000);
+
+     EMPID NAME       DEPARTMENT G     SALARY      BONUS DATEOFJOI                                  
+---------- ---------- ---------- - ---------- ---------- ---------                                  
+         3 john       cs         m      90000      20000 11-APR-12                                  
+
+SQL> --question 2
+SQL> select * from emptable where (salary+bonus) between 80000 and 100000;
+
+     EMPID NAME       DEPARTMENT G     SALARY      BONUS DATEOFJOI                                  
+---------- ---------- ---------- - ---------- ---------- ---------                                  
+         6 rakesh     marketing  m      80000      20000 11-JUN-14                                  
+
+SQL> --question 3
+SQL> select max(bonus) from emptable;
+
+MAX(BONUS)                                                                                          
+----------                                                                                          
+     30000                                                                                          
+
+SQL> --question 4
+SQL> select avg(salary) from emptable group by department;
+
+AVG(SALARY)                                                                                         
+-----------                                                                                         
+      70000                                                                                         
+      85000                                                                                         
+      80000                                                                                         
+      60000                                                                                         
+      40000                                                                                         
+
+SQL> select department,avg(salary) from emptable group by department;
+
+DEPARTMENT AVG(SALARY)                                                                              
+---------- -----------                                                                              
+finance          70000                                                                              
+cs               85000                                                                              
+marketing        80000                                                                              
+electrical       60000                                                                              
+pr               40000                                                                              
+
+SQL> --question 5
+
+SQL> select max(salary) from emptable;
+
+MAX(SALARY)                                                                                         
+-----------                                                                                         
+     125000                                                                                         
+
+SQL> select * from emptable where salary=(select max(salary) from emptable);
+
+     EMPID NAME       DEPARTMENT G     SALARY      BONUS DATEOFJOI                                  
+---------- ---------- ---------- - ---------- ---------- ---------                                  
+         4 rama       cs         f     125000      12500 06-SEP-18                                  
+
+SQL> select department from emptable where salary=(select max(salary) from emptable);
+
+DEPARTMENT                                                                                          
+----------                                                                                          
+cs                                                                                                  
+
+SQL> --question 6
+
+SQL> select * from emptable where salary!=(select max(salary) from emptable);
+
+     EMPID NAME       DEPARTMENT G     SALARY      BONUS DATEOFJOI                                  
+---------- ---------- ---------- - ---------- ---------- ---------                                  
+         1 rohan      finance    m      50000      25000 14-FEB-20                                  
+         2 sohan      electrical m      60000      10000 21-MAR-10                                  
+         3 john       cs         m      90000      20000 11-APR-12                                  
+         5 shyama     cs         f      40000      30000 22-JUL-24                                  
+         6 rakesh     marketing  m      80000      20000 11-JUN-14                                  
+         7 rashika    pr         f      40000      20000 25-JAN-23                                  
+         8 shyama     finance    f      90000      30000 23-AUG-13                                  
+
+7 rows selected.
+
+SQL> select max(salary) from emptable where salary!=(select max(salary) from emptable);
+
+MAX(SALARY)                                                                                         
+-----------                                                                                         
+      90000                                                                                         
+
+SQL> --question 7
+SQL> select name,department,
+  2  case
+  3  when salary>100000 then 'High'
+  4  when salary between 50000 and 100000 then 'Medium'
+  5  else 'Low'
+  6  end as "Message" from emptable;
+
+NAME       DEPARTMENT Messag                                                                        
+---------- ---------- ------                                                                        
+rohan      finance    Medium                                                                        
+sohan      electrical Medium                                                                        
+john       cs         Medium                                                                        
+rama       cs         High                                                                          
+shyama     cs         Low                                                                           
+rakesh     marketing  Medium                                                                        
+rashika    pr         Low                                                                           
+shyama     finance    Medium                                                                        
+
+8 rows selected.
+
+SQL> --question 8
+SQL> select empid ||' '|| name ||' '|| dateofjoining as "Details" from emptable;
+
+Details                                                                                             
+----------------------------------------------------------------------                              
+1 rohan 14-FEB-20                                                                                   
+2 sohan 21-MAR-10                                                                                   
+3 john 11-APR-12                                                                                    
+4 rama 06-SEP-18                                                                                    
+5 shyama 22-JUL-24                                                                                  
+6 rakesh 11-JUN-14                                                                                  
+7 rashika 25-JAN-23                                                                                 
+8 shyama 23-AUG-13                                                                                  
+
+8 rows selected.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> show user
+USER is "SHUBHAM"
+SQL> select current_timestamp from dual;
+
+CURRENT_TIMESTAMP                                                                                   
+---------------------------------------------------------------------------                         
+21-JAN-25 03.37.13.985000 PM +05:30                                                                 
+
+SQL> spool off;

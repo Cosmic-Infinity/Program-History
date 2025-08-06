@@ -1,0 +1,11 @@
+0.7
+2020.2
+May 22 2024
+19:03:11
+C:/Users/KIIT0001/Desktop/Works/DSD Lab/project_5/project_5.sim/sim_1/behav/xsim/glbl.v,1708598507,verilog,,,,glbl,,,,,,,,
+C:/Users/KIIT0001/Desktop/Works/DSD Lab/project_5/project_5.srcs/sim_1/new/d_ff_test.v,1730482096,verilog,,,,d_ff_test,,,,,,,,
+C:/Users/KIIT0001/Desktop/Works/DSD Lab/project_5/project_5.srcs/sim_1/new/d_to_jk_test.v,1730487539,verilog,,,,d_to_jk_test,,,,,,,,
+C:/Users/KIIT0001/Desktop/Works/DSD Lab/project_5/project_5.srcs/sim_1/new/jk_ff_test.v,1730487532,verilog,,,,jk_ff_test,,,,,,,,
+C:/Users/KIIT0001/Desktop/Works/DSD Lab/project_5/project_5.srcs/sources_1/new/d_ff.v,1730487770,verilog,,C:/Users/KIIT0001/Desktop/Works/DSD Lab/project_5/project_5.srcs/sources_1/new/d_to_jk.v,,d_ff,,,,,,,,
+C:/Users/KIIT0001/Desktop/Works/DSD Lab/project_5/project_5.srcs/sources_1/new/d_to_jk.v,1730488080,verilog,,C:/Users/KIIT0001/Desktop/Works/DSD Lab/project_5/project_5.srcs/sim_1/new/d_to_jk_test.v,,d_to_jk,,,,,,,,
+C:/Users/KIIT0001/Desktop/Works/DSD Lab/project_5/project_5.srcs/sources_1/new/jk_ff.v,1730488186,verilog,,C:/Users/KIIT0001/Desktop/Works/DSD Lab/project_5/project_5.srcs/sim_1/new/jk_ff_test.v,,jk_ff,,,,,,,,

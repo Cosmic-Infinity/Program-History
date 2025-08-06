@@ -1,0 +1,474 @@
+SQL> connect shubham/1626;
+Connected.
+SQL> select current_timestamp from dual;
+
+CURRENT_TIMESTAMP                                                               
+---------------------------------------------------------------------------     
+04-FEB-25 02.54.50.131000 PM +05:30                                             
+
+SQL> create table dept_tbl(deptid number(3) primary key, deptname varchar(25));
+
+Table created.
+
+SQL> create table emp_tbl(empid number(3) primary key, name varchar(10), jobtitle varchar(25), deptid number(3) references dept_tbl(deptid), salary number(10));
+
+Table created.
+
+SQL> desc emp_tbl;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPID                                     NOT NULL NUMBER(3)
+ NAME                                               VARCHAR2(10)
+ JOBTITLE                                           VARCHAR2(25)
+ DEPTID                                             NUMBER(3)
+ SALARY                                             NUMBER(10)
+
+SQL> desc dept_tbl;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DEPTID                                    NOT NULL NUMBER(3)
+ DEPTNAME                                           VARCHAR2(25)
+
+SQL> insert into dept_tbl values(&deptid, '&deptname');
+Enter value for deptid: 201
+Enter value for deptname: Software Engineering
+old   1: insert into dept_tbl values(&deptid, '&deptname')
+new   1: insert into dept_tbl values(201, 'Software Engineering')
+
+1 row created.
+
+SQL> /
+Enter value for deptid: 202
+Enter value for deptname: Data Engineering
+old   1: insert into dept_tbl values(&deptid, '&deptname')
+new   1: insert into dept_tbl values(202, 'Data Engineering')
+
+1 row created.
+
+SQL> /
+Enter value for deptid: 203
+Enter value for deptname: Electrical Engineering
+old   1: insert into dept_tbl values(&deptid, '&deptname')
+new   1: insert into dept_tbl values(203, 'Electrical Engineering')
+
+1 row created.
+
+SQL> 204
+SP2-0226: Invalid line number 
+SQL> /
+Enter value for deptid: 204
+Enter value for deptname: Cybersecurity
+old   1: insert into dept_tbl values(&deptid, '&deptname')
+new   1: insert into dept_tbl values(204, 'Cybersecurity')
+
+1 row created.
+
+SQL> /
+Enter value for deptid: 205
+Enter value for deptname: Cloud Computing
+old   1: insert into dept_tbl values(&deptid, '&deptname')
+new   1: insert into dept_tbl values(205, 'Cloud Computing')
+
+1 row created.
+
+SQL> select * from dept_tbl;
+
+    DEPTID DEPTNAME                                                             
+---------- -------------------------                                            
+       201 Software Engineering                                                 
+       202 Data Engineering                                                     
+       203 Electrical Engineering                                               
+       204 Cybersecurity                                                        
+       205 Cloud Computing                                                      
+
+SQL> insert into emp_tbl values(&empid, '&name', '&jobtitle', &deptid, &salary);
+Enter value for empid: 1
+Enter value for name: Alice
+Enter value for jobtitle: Software Engineer
+Enter value for deptid: 201
+Enter value for salary: 70000
+old   1: insert into emp_tbl values(&empid, '&name', '&jobtitle', &deptid, &salary)
+new   1: insert into emp_tbl values(1, 'Alice', 'Software Engineer', 201, 70000)
+
+1 row created.
+
+SQL> /
+Enter value for empid: 2
+Enter value for name: Bob
+Enter value for jobtitle: Data Scientist
+Enter value for deptid: 202
+Enter value for salary: 75000
+old   1: insert into emp_tbl values(&empid, '&name', '&jobtitle', &deptid, &salary)
+new   1: insert into emp_tbl values(2, 'Bob', 'Data Scientist', 202, 75000)
+
+1 row created.
+
+SQL> /
+Enter value for empid: 3
+Enter value for name: Charlie
+Enter value for jobtitle: Engineering Manager
+Enter value for deptid: 201
+Enter value for salary: 95000
+old   1: insert into emp_tbl values(&empid, '&name', '&jobtitle', &deptid, &salary)
+new   1: insert into emp_tbl values(3, 'Charlie', 'Engineering Manager', 201, 95000)
+
+1 row created.
+
+SQL> /
+Enter value for empid: 4
+Enter value for name: David
+Enter value for jobtitle: System Analyst
+Enter value for deptid: 203
+Enter value for salary: 72000
+old   1: insert into emp_tbl values(&empid, '&name', '&jobtitle', &deptid, &salary)
+new   1: insert into emp_tbl values(4, 'David', 'System Analyst', 203, 72000)
+
+1 row created.
+
+SQL> /
+Enter value for empid: 5
+Enter value for name: Eve
+Enter value for jobtitle: Cybersecurity Analyst
+Enter value for deptid: 204
+Enter value for salary: 69000
+old   1: insert into emp_tbl values(&empid, '&name', '&jobtitle', &deptid, &salary)
+new   1: insert into emp_tbl values(5, 'Eve', 'Cybersecurity Analyst', 204, 69000)
+
+1 row created.
+
+SQL> 6
+SP2-0226: Invalid line number 
+SQL> /
+Enter value for empid: 6
+Enter value for name: Frank
+Enter value for jobtitle: AI Engineer
+Enter value for deptid: 202
+Enter value for salary: 80000
+old   1: insert into emp_tbl values(&empid, '&name', '&jobtitle', &deptid, &salary)
+new   1: insert into emp_tbl values(6, 'Frank', 'AI Engineer', 202, 80000)
+
+1 row created.
+
+SQL> /
+Enter value for empid: 7
+Enter value for name: Grace
+Enter value for jobtitle: Cloud Engineer
+Enter value for deptid: 201
+Enter value for salary: 73000
+old   1: insert into emp_tbl values(&empid, '&name', '&jobtitle', &deptid, &salary)
+new   1: insert into emp_tbl values(7, 'Grace', 'Cloud Engineer', 201, 73000)
+
+1 row created.
+
+SQL> /
+Enter value for empid: 8
+Enter value for name: Hank
+Enter value for jobtitle: DevOps Engineer
+Enter value for deptid: 205
+Enter value for salary: 77000
+old   1: insert into emp_tbl values(&empid, '&name', '&jobtitle', &deptid, &salary)
+new   1: insert into emp_tbl values(8, 'Hank', 'DevOps Engineer', 205, 77000)
+
+1 row created.
+
+SQL> /
+Enter value for empid: 9
+Enter value for name: Ivy
+Enter value for jobtitle: Network Engineer
+Enter value for deptid: NULL
+Enter value for salary: 68000
+old   1: insert into emp_tbl values(&empid, '&name', '&jobtitle', &deptid, &salary)
+new   1: insert into emp_tbl values(9, 'Ivy', 'Network Engineer', NULL, 68000)
+
+1 row created.
+
+SQL> /
+Enter value for empid: 10
+Enter value for name: Jake
+Enter value for jobtitle: Embedded Systems Engineer
+Enter value for deptid: 203
+Enter value for salary: 71000
+old   1: insert into emp_tbl values(&empid, '&name', '&jobtitle', &deptid, &salary)
+new   1: insert into emp_tbl values(10, 'Jake', 'Embedded Systems Engineer', 203, 71000)
+
+1 row created.
+
+SQL> select * from emp_tbl;
+
+     EMPID NAME       JOBTITLE                      DEPTID     SALARY           
+---------- ---------- ------------------------- ---------- ----------           
+         1 Alice      Software Engineer                201      70000           
+         2 Bob        Data Scientist                   202      75000           
+         3 Charlie    Engineering Manager              201      95000           
+         4 David      System Analyst                   203      72000           
+         5 Eve        Cybersecurity Analyst            204      69000           
+         6 Frank      AI Engineer                      202      80000           
+         7 Grace      Cloud Engineer                   201      73000           
+         8 Hank       DevOps Engineer                  205      77000           
+         9 Ivy        Network Engineer                          68000           
+        10 Jake       Embedded Systems Engineer        203      71000           
+
+10 rows selected.
+
+SQL> --Question 1
+SQL> select emp_tbl.name, emp_tbl.jobtitle, dept_tbl.deptname, emp_tbl.salary
+  2  from emp_tbl inner join dept_tbl on emp_tbl.deptid=dept_tbl.deptid;
+
+NAME       JOBTITLE                  DEPTNAME                      SALARY       
+---------- ------------------------- ------------------------- ----------       
+Alice      Software Engineer         Software Engineering           70000       
+Bob        Data Scientist            Data Engineering               75000       
+Charlie    Engineering Manager       Software Engineering           95000       
+David      System Analyst            Electrical Engineering         72000       
+Eve        Cybersecurity Analyst     Cybersecurity                  69000       
+Frank      AI Engineer               Data Engineering               80000       
+Grace      Cloud Engineer            Software Engineering           73000       
+Hank       DevOps Engineer           Cloud Computing                77000       
+Jake       Embedded Systems Engineer Electrical Engineering         71000       
+
+9 rows selected.
+
+SQL> --Question 2
+SQL> select emp_tbl.name, emp_tbl.jobtitle, dept_tbl.deptname, emp_tbl.salary
+  2  from emp_tbl left outer join dept_tbl on emp_tbl.deptid=dept_tbl.deptid;
+
+NAME       JOBTITLE                  DEPTNAME                      SALARY       
+---------- ------------------------- ------------------------- ----------       
+Grace      Cloud Engineer            Software Engineering           73000       
+Charlie    Engineering Manager       Software Engineering           95000       
+Alice      Software Engineer         Software Engineering           70000       
+Frank      AI Engineer               Data Engineering               80000       
+Bob        Data Scientist            Data Engineering               75000       
+Jake       Embedded Systems Engineer Electrical Engineering         71000       
+David      System Analyst            Electrical Engineering         72000       
+Eve        Cybersecurity Analyst     Cybersecurity                  69000       
+Hank       DevOps Engineer           Cloud Computing                77000       
+Ivy        Network Engineer                                         68000       
+
+10 rows selected.
+
+SQL> --Question 3
+SQL> select dept_tbl.deptname, emp_tbl.name from dept_tbl right outer join emp_tbl on dept_tbl.deptid=emp_tbl.deptid;
+
+DEPTNAME                  NAME                                                  
+------------------------- ----------                                            
+Software Engineering      Grace                                                 
+Software Engineering      Charlie                                               
+Software Engineering      Alice                                                 
+Data Engineering          Frank                                                 
+Data Engineering          Bob                                                   
+Electrical Engineering    Jake                                                  
+Electrical Engineering    David                                                 
+Cybersecurity             Eve                                                   
+Cloud Computing           Hank                                                  
+                          Ivy                                                   
+
+10 rows selected.
+
+SQL> --Question 4
+SQL> select emp_tbl.name, dept_tbl.deptname from emp_tbl full outer join dept_tbl on emp_tbl.deptid=dept_tbl.deptid;
+
+NAME       DEPTNAME                                                             
+---------- -------------------------                                            
+Alice      Software Engineering                                                 
+Bob        Data Engineering                                                     
+Charlie    Software Engineering                                                 
+David      Electrical Engineering                                               
+Eve        Cybersecurity                                                        
+Frank      Data Engineering                                                     
+Grace      Software Engineering                                                 
+Hank       Cloud Computing                                                      
+Ivy                                                                             
+Jake       Electrical Engineering                                               
+
+10 rows selected.
+
+SQL> --Question 5
+SQL> alter table emp_tbl add managerid varchar(3);
+
+Table altered.
+
+SQL> update emp_tbl set managerid=3 where not(empid=3);
+
+9 rows updated.
+
+SQL> update emp_tbl set managerid=NULL where empid=3;
+
+1 row updated.
+
+SQL> select * from emp_tbl;
+
+     EMPID NAME       JOBTITLE                      DEPTID     SALARY MAN       
+---------- ---------- ------------------------- ---------- ---------- ---       
+         1 Alice      Software Engineer                201      70000 3         
+         2 Bob        Data Scientist                   202      75000 3         
+         3 Charlie    Engineering Manager              201      95000           
+         4 David      System Analyst                   203      72000 3         
+         5 Eve        Cybersecurity Analyst            204      69000 3         
+         6 Frank      AI Engineer                      202      80000 3         
+         7 Grace      Cloud Engineer                   201      73000 3         
+         8 Hank       DevOps Engineer                  205      77000 3         
+         9 Ivy        Network Engineer                          68000 3         
+        10 Jake       Embedded Systems Engineer        203      71000 3         
+
+10 rows selected.
+
+SQL> SELECT
+  2      e1.name AS employee_name,
+  3      e2.name AS manager_name
+  4  FROM
+  5      emp_tbl e1
+  6  INNER JOIN
+  7      emp_tbl e2 ON e1.managerid = e2.empid;
+
+EMPLOYEE_N MANAGER_NA                                                           
+---------- ----------                                                           
+Jake       Charlie                                                              
+Ivy        Charlie                                                              
+Hank       Charlie                                                              
+Grace      Charlie                                                              
+Frank      Charlie                                                              
+Eve        Charlie                                                              
+David      Charlie                                                              
+Bob        Charlie                                                              
+Alice      Charlie                                                              
+
+9 rows selected.
+
+SQL> --Question 6
+SQL> SELECT deptid, MAX(salary) AS highest_salary
+  2  FROM emp_tbl
+  3  GROUP BY deptid;
+
+    DEPTID HIGHEST_SALARY                                                       
+---------- --------------                                                       
+                    68000                                                       
+       205          77000                                                       
+       201          95000                                                       
+       202          80000                                                       
+       203          72000                                                       
+       204          69000                                                       
+
+6 rows selected.
+
+SQL> --Question 7
+SQL> SELECT d.deptid, d.deptname
+  2  FROM dept_tbl d
+  3  LEFT JOIN emp_tbl e ON d.deptid = e.deptid
+  4  WHERE e.empid IS NULL;
+
+no rows selected
+
+SQL> --Question 8
+SQL> SELECT e1.empid AS employee_id, e1.name AS employee_name, e1.salary AS employee_salary,
+  2         e2.empid AS manager_id, e2.name AS manager_name, e2.salary AS manager_salary
+  3  FROM emp_tbl e1
+  4  JOIN emp_tbl e2 ON e1.managerid = e2.empid
+  5  WHERE e1.salary > e2.salary;
+
+no rows selected
+
+SQL> --Question 9
+SQL> SELECT e.empid, e.name, e.salary, e.deptid
+  2  FROM emp_tbl e
+  3  JOIN (
+  4      SELECT deptid, AVG(salary) AS avg_salary
+  5      FROM emp_tbl
+  6      GROUP BY deptid
+  7  ) avg_dept
+  8  ON e.deptid = avg_dept.deptid
+  9  WHERE e.salary > avg_dept.avg_salary;
+
+     EMPID NAME           SALARY     DEPTID                                     
+---------- ---------- ---------- ----------                                     
+         3 Charlie         95000        201                                     
+         4 David           72000        203                                     
+         6 Frank           80000        202                                     
+
+SQL> --Question 10
+SQL> SELECT empid, name, deptid, salary,
+  2         RANK() OVER (PARTITION BY deptid ORDER BY salary DESC) AS salary_rank
+  3  FROM emp_tbl;
+
+     EMPID NAME           DEPTID     SALARY SALARY_RANK                         
+---------- ---------- ---------- ---------- -----------                         
+         3 Charlie           201      95000           1                         
+         7 Grace             201      73000           2                         
+         1 Alice             201      70000           3                         
+         6 Frank             202      80000           1                         
+         2 Bob               202      75000           2                         
+         4 David             203      72000           1                         
+        10 Jake              203      71000           2                         
+         5 Eve               204      69000           1                         
+         8 Hank              205      77000           1                         
+         9 Ivy                        68000           1                         
+
+10 rows selected.
+
+SQL> --Question 11
+SQL> SELECT deptid, SUM(salary) AS total_salary_expense
+  2  FROM emp_tbl
+  3  GROUP BY deptid;
+
+    DEPTID TOTAL_SALARY_EXPENSE                                                 
+---------- --------------------                                                 
+                          68000                                                 
+       205                77000                                                 
+       201               238000                                                 
+       202               155000                                                 
+       203               143000                                                 
+       204                69000                                                 
+
+6 rows selected.
+
+SQL> --Question 12
+SQL> SELECT deptid
+  2  FROM emp_tbl
+  3  GROUP BY deptid
+  4  HAVING AVG(salary) > 70000;
+
+    DEPTID                                                                      
+----------                                                                      
+       205                                                                      
+       201                                                                      
+       202                                                                      
+       203    
+
+SQL> --Question 13
+SQL> SELECT empid, name, deptid, salary
+  2  FROM emp_tbl
+  3  WHERE salary > (SELECT AVG(salary) FROM emp_tbl);
+
+     EMPID NAME           DEPTID     SALARY                                     
+---------- ---------- ---------- ----------                                     
+         3 Charlie           201      95000                                     
+         6 Frank             202      80000                                     
+         8 Hank              205      77000  
+
+SQL> --Question 14
+SQL> SELECT d.deptid, d.deptname
+  2  FROM dept_tbl d
+  3  LEFT JOIN emp_tbl e ON d.deptid = e.deptid
+  4  WHERE e.deptid IS NULL;
+
+no rows selected
+
+SQL> --Question 15
+SQL> SELECT deptid, COUNT(empid) AS employee_count
+  2  FROM emp_tbl
+  3  GROUP BY deptid
+  4  HAVING COUNT(empid) > 3;
+
+no rows selected
+
+SQL> commit;
+
+Commit complete.
+
+SQL> select current_timestamp from dual;
+
+CURRENT_TIMESTAMP                                                               
+---------------------------------------------------------------------------     
+04-FEB-25 04.00.11.859000 PM +05:30                                             
+
+SQL> spool off;

@@ -1,0 +1,9 @@
+0.7
+2020.2
+May 22 2024
+19:03:11
+C:/Users/KIIT0001/Desktop/Works/DSD Lab/project_9/project_9.sim/sim_1/behav/xsim/glbl.v,1708598507,verilog,,,,glbl,,,,,,,,
+C:/Users/KIIT0001/Desktop/Works/DSD Lab/project_9/project_9.srcs/sim_1/new/counter_mod_8_test.v,1730846510,verilog,,,,counter_mod_8_test,,,,,,,,
+C:/Users/KIIT0001/Desktop/Works/DSD Lab/project_9/project_9.srcs/sources_1/new/counter_mod_8.v,1730844800,verilog,,C:/Users/KIIT0001/Desktop/Works/DSD Lab/project_9/project_9.srcs/sources_1/new/jk_ff.v,,counter_mod_8,,,,,,,,
+C:/Users/KIIT0001/Desktop/Works/DSD Lab/project_9/project_9.srcs/sources_1/new/jk_ff.v,1730503650,verilog,,C:/Users/KIIT0001/Desktop/Works/DSD Lab/project_9/project_9.srcs/sources_1/new/mux.v,,jk_ff,,,,,,,,
+C:/Users/KIIT0001/Desktop/Works/DSD Lab/project_9/project_9.srcs/sources_1/new/mux.v,1730505335,verilog,,C:/Users/KIIT0001/Desktop/Works/DSD Lab/project_9/project_9.srcs/sim_1/new/counter_mod_8_test.v,,mux,,,,,,,,
